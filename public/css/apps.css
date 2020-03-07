@@ -10220,6 +10220,7 @@ a.text-dark:focus {
 }
 /* The Sidebar */
 .sb {
+    z-index: 1001;
     width: 300px;
     height: 100%;
     position: absolute;

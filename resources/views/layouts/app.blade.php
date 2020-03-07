@@ -28,7 +28,7 @@
 
 <body>
     <div id="app">
-    @if(!\Request::is('login') && !\Request::is('register') && !\Request::is('home'))
+        @if(!\Request::is('login') && !\Request::is('register') && !\Request::is('home'))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -82,6 +82,8 @@
         @if(!\Request::is('login') && !\Request::is('register'))
         @include('layouts.sidebar')
         @endif
+
+        <!-- Page Content -->
         <main class="py-4">
             @yield('content')
         </main>

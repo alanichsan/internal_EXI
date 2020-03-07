@@ -16,6 +16,8 @@
                 <span class="checkmark"></span>
               </label>
 
+
+
               <input type="checkbox" id="cbx" style="display: none;">
 
               <ul style="list-style: none;" class="ml-5">
@@ -24,7 +26,15 @@
                 <li><label class="customcheck"><input type="checkbox" class="subOption">Lokasi Perangkat<span class="checkmark"></span></label></li>
                 <li><label class="customcheck"><input type="checkbox" class="subOption">Gate<span class="checkmark"></span></label></li>
                 <li><label class="customcheck"><input type="checkbox" class="subOption">Point Of Sale Desktop<span class="checkmark"></span></label></li>
-                <li><label class="customcheck"><input type="checkbox" class="subOption">Lokasi Perangkat<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Mobile Reader<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Tarif Tiket<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Managemen Fasilitas<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Diskon Perorangan<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Hak Akses<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Rumus Perhitungan<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Managemen Voucher<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">Diskon wahana<span class="checkmark"></span></label></li>
+                <li><label class="customcheck"><input type="checkbox" class="subOption">S&K Sewa Stroller<span class="checkmark"></span></label></li>
               </ul>
             </li>
           </ul>

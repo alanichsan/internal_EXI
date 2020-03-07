@@ -17,15 +17,15 @@ class CreateUsersInformationTable extends Migration
             $table->unsignedBigInteger('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('alamat');
-            $table->string('gender');
+            $table->enum('gender',['Male', 'Female']);
             $table->string('date_of_birth');
             $table->string('place_of_birth');
             $table->string('nik');
             $table->string('tanggal_bergabung');
             $table->string('tanggal_lulus_probation');
-            $table->integer('department')->references('departments_id')->on('departments_list');
+            $table->enum('department', ['IT','Marketing', 'Operational', 'Finance']);
             $table->string('jabatan');
-            $table->integer('role')->references('roles_id')->on('roles_list');
+            $table->enum('role', ['Staff', 'Manager', 'Director']);
             $table->timestamps();
         });
     }

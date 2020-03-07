@@ -17,7 +17,7 @@ class CreateProjectListTable extends Migration
             $table->bigIncrements('projects_id');
             $table->string('projects_name');
             $table->string('perusahaan');
-            $table->Integer('status_projects')->references('status_id')->on('project_status');
+            $table->enum('status_projects', ['Potensial', 'Quotation Letter', 'BRD', 'PO', 'Development', 'Testing', 'Live', 'Pembayaran', 'Maintenance', 'Finished', 'Passed']);
             $table->timestamps();
         });
     }

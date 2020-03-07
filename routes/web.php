@@ -21,7 +21,14 @@ Route::get('/', function () {
 Route::get('/commendcenter', function () {
     return view('menu/commendcenter');
 });
+Route::get('/formuser', function () {
+    return view('menu/formuser');
+});
+Route::get('/formproject', function () {
+    return view('menu/formproject');
+});
 
+// Login and register
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

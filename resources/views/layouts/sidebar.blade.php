@@ -3,10 +3,9 @@
 	<input type="button" value="&times" ID="BTNn" onClick="sidebarr()"></input>
 	<section class="sec">
 		<ul class="sidebar">
-			<li><a href="/"> HOME</a></li>
-			<li><a href="/commendcenter"> Comemend Center</a></li>
-			<li><a href="#CONTACT">CONTACT</a></li>
+			<li><a href="/formuser">Form User</a></li>
+			<li><a href="/commendcenter"> Command Center</a></li>
+			<li><a href="/formproject">Form Project</a></li>
 		</ul>
 	</section>
 </div>
-<!-- Page Content -->
