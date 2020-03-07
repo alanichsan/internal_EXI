@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class UserInformation extends Model
 {
     protected $fillable = [
-        'users_id', 'name', 'alamat', 'gender', 'date_of_birth', 'place_of_birth', 'nik', 'tanggal_bergabung', 'tanggal_lulus_probation', 'department', 'jabatan', 'role',
+        'users_id', 
+        'name',
+        'alamat', 
+        'gender', 
+        'date_of_birth', 
+        'place_of_birth', 
+        'nik', 
+        'tanggal_bergabung', 
+        'tanggal_lulus_probation', 
+        'department', 
+        'jabatan', 
+        'role',
     ];
 
     protected $table = 'users_information';
