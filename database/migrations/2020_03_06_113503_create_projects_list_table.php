@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectListTable extends Migration
+class CreateProjectsListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateProjectListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_list');
+        Schema::dropIfExists('projects_list');
     }
 }

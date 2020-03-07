@@ -15,13 +15,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => Str::random(10).'@gmail.com',
+            'id' => 1,
+            'email' => 'adminacc@gmail.com',
             'password' => Hash::make('password'),
         ]);
         DB::table('users_information')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'users_id' => 1,
+            'name' => 'admin',
+            'alamat' => 'admin',
+            'gender' => 'Male',
+            'date_of_birth' => 'admin',
+            'place_of_birth' => 'admin',
+            'nik' => 'admin',
+            'tanggal_bergabung' => 'admin',
+            'tanggal_lulus_probation' => 'admin',
+            'department' => 'IT',
+            'jabatan' => 'admin',
+            'role' => 'Staff',
         ]);
     }
 }
