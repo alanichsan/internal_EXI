@@ -62,6 +62,17 @@
 
                             </div>
                         </div>
+
+                        <!-- Register  -->
+                        <ul class="navbar-nav ml-auto d-inline">
+                            <!-- Authentication Links -->
+                            @guest
+                            <li class="nav-item d-inline ml-3">
+                                <a class="nav-link d-inline" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                            @endguest
+                        </ul>
+
                     </form>
                 </div>
             </div>
