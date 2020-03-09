@@ -31,7 +31,7 @@
 
 <body>
     <div id="app">
-        @if(!\Request::is(['login','register', 'home', 'formuser', 'formproject', 'commendcenter', 'listuser']))
+        @if(!\Request::is(['login','register', 'home', 'formuser', 'formproject', 'commandcenter', 'listuser']))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

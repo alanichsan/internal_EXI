@@ -4,7 +4,7 @@
 	<section class="sec">
 		<ul class="sidebar">
 			<li><a href="/formuser">Form User</a></li>
-			<li><a href="/commendcenter"> Command Center</a></li>
+			<li><a href="/commandcenter"> Command Center</a></li>
 			<li><a href="/formproject">Form Project</a></li>
 			<li><a href="/listuser">List User</a></li>
 		</ul>
@@ -22,11 +22,11 @@
 						{{ __('Logout') }}
 					</a>
 
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none; text">
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						@csrf
 					</form>
 				</div>
 			</li>
 		</div>
 	</center>
-</div>
+	</div>
