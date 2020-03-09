@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 use App\UserInformation;
+use App\Project_list;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -34,42 +37,72 @@ class HomeController extends Controller
     }
     public function store_user(Request $request)
     {
+        // Validating the input from the Form User
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'gender' => ['required', 'string', 'max:255'],
-            'date_of_birth' => ['required', 'string', 'max:255'],
-            'place_of_birth' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'string', 'max:255'],
+            'place' => ['required', 'string', 'max:255'],
             'nik' => ['required', 'string', 'max:255'],
-            'tanggal_bergabung' => ['required', 'string', 'max:255'],
-            'tanggal_lulus_probation' => ['required', 'string', 'max:255'],
+            'bergabung' => ['required', 'string', 'max:255'],
+            'lulus' => ['required', 'string', 'max:255'],
             'department' => ['required', 'string', 'max:255'],
             'jabatan' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
         ]);
-        // process the login
+        // Send Error
         if ($validator->fails()) {
-            return redirect('contact/create')
+            return redirect('formuser')
             ->withErrors($validator)
             ->withInput($request->except('password'));
         } else {
-            // store
-            $store             = new UserInformation;
-            $store->name = $request->name;
-            $store->alamat = $request->alamat;
-            $store->gender = $request->gender;
-            $store->date_of_birth = $request->date_of_birth;
-            $store->place_of_birth = $request->place_of_birth;
-            $store->nik = $request->nik;
-            $store->tanggal_bergabung = $request->tanggal_bergabung;
-            $store->tanggal_lulus_probation = $request->tanggal_lulus_probation;
-            $store->department = $request->department;
-            $store->jabatan = $request->jabatan;
-            $store->role = $request->role;
-            $store->save();
+            // Insert to table users
+            $user = User::create([
+                'email' => $request->email,
+                'password' => Hash::make('password'),
+            ]);
+            // Insert to table users_information
+            UserInformation::create([
+                'users_id' => $user['id'],
+                'name' => $request->name,
+                'alamat' => $request->alamat,
+                'gender' => $request->gender,
+                'date_of_birth' => $request->date,
+                'place_of_birth' => $request->place,
+                'nik' => $request->nik,
+                'tanggal_bergabung' => $request->bergabung,
+                'tanggal_lulus_probation' => $request->lulus,
+                'department' => $request->department,
+                'jabatan' => $request->jabatan,
+                'role' => $request->role
+            ]);
         
-            // redirect
+            // Redirect to the List User
             return redirect('/listuser');
+        }
+    }
+    public function store_Project(Request $request)
+    {
+        // Validating the input from the Form User
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'perusahaan' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string', 'max:255']
+        ]);
+        if ($validator->fails()) {
+            return redirect('formproject')
+            ->withErrors($validator)
+            ->withInput($request->except('password'));
+        } else {
+            // Insert to table users_information
+            Project_list::create([
+                'projects_name' => $request->name,
+                'perusahaan' => $request->perusahaan,
+                'status_projects' => $request->status
+            ]);
+            // Redirect to the List User
+            return redirect('/listproject');
         }
     }
 }

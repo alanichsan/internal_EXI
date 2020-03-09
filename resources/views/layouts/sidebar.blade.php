@@ -6,31 +6,27 @@
 			<li><a href="/formuser">Form User</a></li>
 			<li><a href="/commendcenter"> Command Center</a></li>
 			<li><a href="/formproject">Form Project</a></li>
+			<li><a href="/listuser">List User</a></li>
 		</ul>
 	</section>
 	<center>
 		<div class="footer">
-			@guest
-			@if (Route::has('register'))
-			@endif
-			@else
 			<li class="nav-item dropdown" style="list-style: none;">
-				<a id="navbarDropdown" class="btn btn-info dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+				<a id="navbarDropdown" class="btn btn-info text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					{{ Auth::user()->users_information[0]->name }} <span class="caret"></span>
 				</a>
 
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+					<a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
 						{{ __('Logout') }}
 					</a>
 
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none; text">
 						@csrf
 					</form>
 				</div>
 			</li>
-			@endguest
 		</div>
 	</center>
 </div>

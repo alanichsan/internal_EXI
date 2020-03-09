@@ -42,7 +42,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check d-inline">
                                     <input class="form-check-input d-inline" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label d-inline mr-3" for="remember">
+                                    <label class="form-check-label d-inline mr-3 ml-3" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
@@ -62,17 +62,6 @@
 
                             </div>
                         </div>
-
-                        <!-- Register  -->
-                        <ul class="navbar-nav ml-auto d-inline">
-                            <!-- Authentication Links -->
-                            @guest
-                            <li class="nav-item d-inline ml-3">
-                                <a class="nav-link d-inline" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                            @endguest
-                        </ul>
-
                     </form>
                 </div>
             </div>

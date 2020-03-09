@@ -13,23 +13,34 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'HomeController@welcome')->name('welcome');
 
-// Route::post('/formuser',)
+// Insert Input from Form User
+Route::post('/formuser', 'HomeController@store_user');
+// Insert Input from Form project
+Route::post('/formproject', 'HomeController@store_project');
 
-// sidebar menu
-Route::get('/commendcenter', function () {
-    return view('menu/commendcenter');
+// Sidebar Menu
+Route::get('/commandcenter', function () {
+    return view('menu/commandcenter');
 });
+//  Go to Form User
 Route::get('/formuser', function () {
     return view('menu/formuser');
 });
+// Go to Form Project
 Route::get('/formproject', function () {
     return view('menu/formproject');
 });
-
+// List User
+Route::get('/listuser', function () {
+    return view('menu/listuser');
+});
+// List preject
+Route::get('/listproject', function () {
+    return view('menu/listproject');
+});
 // Login and register
 Auth::routes();
-
+// Home
 Route::get('/home', 'HomeController@index')->name('home');

@@ -42,6 +42,7 @@
     margin: 0;
     padding: 0;
 }
+
 /* The customcheck */
 .customcheck {
     display: block;
@@ -10300,3 +10301,7 @@ a.text-dark:focus {
     top: 0;
     left: 0;
 }
+
+/* pagination */
+
+

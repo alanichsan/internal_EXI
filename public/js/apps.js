@@ -65767,7 +65767,4 @@ function sidebarr(){
       sidb.style.left="-300px";
       btn.style.display="block";
       btnn.style.display="none";
-
-      
-  
 }
