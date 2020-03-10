@@ -54,14 +54,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0 d-inline">
-                            <div class="col-md-8 offset-md-4 d-inline">
-                                <button type="submit" class="btn btn-primary ml-2">
-                                    {{ __('Login') }}
-                                </button>
-
+                            <div class="form-group row mb-0 d-inline">
+                                <div class="col-md-8 offset-md-4 d-inline">
+                                    <button type="submit" class="btn btn-primary" style="margin-left:50px; width:100px">
+                                        {{ __('Login') }}
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

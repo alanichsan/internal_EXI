@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Status">Status Project</label>
-                        <select class="form-control @error('Status') is-invalid @enderror" id="Status" placeholder="Input Status Project" name="status"  value="{{ old('status') }}">
+                        <select class="form-control @error('Status') is-invalid @enderror" id="Status" placeholder="Input Status Project" name="status" value="{{ old('status') }}">
                             <option>Potensial</option>
                             <option>Quotation Letter</option>
                             <option>BRD</option>
@@ -43,7 +43,9 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <center>
+                        <button type="submit" class="btn btn-primary  mt-5" style="width:100px">Create</button>
+                    </center>
                 </form>
             </div>
         </div>

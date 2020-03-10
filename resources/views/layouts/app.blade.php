@@ -12,6 +12,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/apps.js') }}" defer></script>
+
+    <link href="{{asset('plugin/fullcalendar-4.4.0/packages/core/main.css')}}" rel='stylesheet' />
+    <link href="{{asset('plugin/fullcalendar-4.4.0/packages/daygrid/main.min.css')}}" rel='stylesheet' />
+    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/core/main.min.js')}}"></script>
+    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/interaction/main.min.js')}}"></script>
+    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/daygrid/main.js')}}"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -73,4 +80,5 @@
     </div>
 </body>
 
+@yield('js-script')
 </html>

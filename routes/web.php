@@ -40,6 +40,9 @@ Route::get('/listuser', function () {
 Route::get('/listproject', function () {
     return view('menu/listproject');
 });
+Route::get('/calendar', function () {
+    return view('menu/calendar');
+});
 // Login and register
 Auth::routes();
 // Home
