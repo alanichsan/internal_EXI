@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersPermissionsTable extends Migration
+class CreateDailyReportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateUsersPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('permission')->references('permission_id')->on('permissions_list');
+        Schema::create('daily_report', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('content');
+            $table->enum('valid', ['valid', 'edited', 'deleted']);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateUsersPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_permissions');
+        Schema::dropIfExists('daily_report');
     }
 }

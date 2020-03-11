@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionsListTable extends Migration
+class CreateDevelopmentRequestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePermissionsListTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissions_list', function (Blueprint $table) {
-            $table->bigIncrements('permission_id');
-            $table->string('permission_name');
-            $table->string('permission_description');
+        Schema::create('development_request', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePermissionsListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissions_list');
+        Schema::dropIfExists('development_request');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\UserInformation;
 use App\Project_list;
+use App\Report;
 use App\User;
 
 class HomeController extends Controller
@@ -117,7 +118,7 @@ class HomeController extends Controller
             ->withInput($request->except('password'));
         } else {
             // Insert to table list_projects
-            Project_list::create([
+            Report::create([
                 'projects_name' => $request->name,
                 'perusahaan' => $request->perusahaan,
                 'status_projects' => $request->status

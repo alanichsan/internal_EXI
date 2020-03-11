@@ -14,9 +14,9 @@
                     </div>
                     @endif
                     <div class="alert alert-success" role="alert">
-                        You are logged in!<br>
+                    Hello 
+                    {{ Auth::user()->users_information[0]->name }}
                     </div>
-                    <br> <a href="/commendCenter" class="btn btn-primary float-right">Go to home <span class="my-3">&#8250;</span></a>
                 </div>
             </div>
         </div>
