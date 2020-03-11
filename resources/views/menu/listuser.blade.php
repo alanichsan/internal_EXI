@@ -16,8 +16,8 @@
                 @endif
                 <div class="main_content">
                     <div class="info">
-                        <center>
                             <div style="overflow-x:auto;">
+                            <a href="/formuser" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
                                 <table class="content-table">
                                     <thead>
                                         <tr>
@@ -56,7 +56,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </center>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="Report">Report</label>
                         <!-- <input type="text textarea" class="form-control @error('report') is-invalid @enderror" id="report" placeholder="Input Report" name="report" value="{{ old('report') }}"> -->
-                        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px; width: 100%"></textarea>
+                        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px; width: 100%;" class="p-2"></textarea>
 
                         @error('report')
                         <div class="alert alert-danger">{{ $message }}</div>

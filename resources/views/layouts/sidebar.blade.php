@@ -3,14 +3,13 @@
 	<input type="button" value="&times" ID="BTNn" onClick="sidebarr()"></input>
 	<section class="sec">
 		<ul class="sidebar">
-			<li><a href="/formuser">Form User</a></li>
-			<li><a href="/commandcenter"> Command Center</a></li>
-			<li><a href="/formproject">Form Project</a></li>
 			<li><a href="/listuser">List User</a></li>
+			<li><a href="/listproject">List Project</a></li>
+			<li><a href="/commandcenter">Command Center</a></li>
 		</ul>
 	</section>
 	<center>
-		<div class="footer">
+		<div class="footer" id="myDIV">
 			<li class="nav-item dropdown" style="list-style: none;">
 				<a id="navbarDropdown" class="btn btn-info text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					{{ Auth::user()->users_information[0]->name }} <span class="caret"></span>

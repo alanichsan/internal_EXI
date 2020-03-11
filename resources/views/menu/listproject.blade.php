@@ -14,7 +14,7 @@
                 <div class="main_content">
                     <div class="info">
                             <div style="overflow-x:auto;">
-                            <a href="/formuser" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
+                            <a href="/formproject" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
                                 <table class="content-table">
                                     <thead>
                                         <tr>
