@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Date">Date of birth</label>
-                        <input type="text" class="form-control @error('Date') is-invalid @enderror" id="Date" placeholder="Input Date of birth" name="date" value="{{ old('date') }}">
+                        <input type="date" class="form-control @error('Date') is-invalid @enderror datetimepicker-input" id="datetimepicker" placeholder="Input Date of birth" name="date" value="{{ old('date') }}">
                         @error('Date')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -66,14 +66,14 @@
                     </div>
                     <div class="form-group">
                         <label for="Bergabung">Tanggal Bergabung</label>
-                        <input type="text" class="form-control @error('Bergabung') is-invalid @enderror" id="Bergabung" placeholder="Input Tanggal Bergabung" name="bergabung" value="{{ old('bergabung') }}">
+                        <input type="date" class="form-control @error('Bergabung') is-invalid @enderror" id="Bergabung" placeholder="Input Tanggal Bergabung" name="bergabung" value="{{ old('bergabung') }}">
                         @error('Bergabung')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="Lulus">Tanggal Lulus Probation</label>
-                        <input type="text" class="form-control @error('Lulus') is-invalid @enderror" id="Lulus" placeholder="Input Tanggal Lulus Probation" name="lulus" value="{{ old('lulus') }}">
+                        <input type="date" class="form-control @error('Lulus') is-invalid @enderror" id="Lulus" placeholder="Input Tanggal Lulus Probation" name="lulus" value="{{ old('lulus') }}">
                         @error('Lulus')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

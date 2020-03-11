@@ -42,11 +42,11 @@ class HomeController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'gender' => ['required', 'string', 'max:255'],
-            'date' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'date', 'max:255'],
             'place' => ['required', 'string', 'max:255'],
-            'nik' => ['required', 'string', 'max:255'],
-            'bergabung' => ['required', 'string', 'max:255'],
-            'lulus' => ['required', 'string', 'max:255'],
+            'nik' => ['required', '', 'max:255'],
+            'bergabung' => ['required', 'date', 'max:255'],
+            'lulus' => ['required', 'date', 'max:255'],
             'department' => ['required', 'string', 'max:255'],
             'jabatan' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
@@ -79,12 +79,12 @@ class HomeController extends Controller
             ]);
         
             // Redirect to the List User
-            return redirect('/listuser');
+            return redirect('/listuser')->with('status', 'Success!');
         }
     }
     public function store_Project(Request $request)
     {
-        // Validating the input from the Form User
+        // Validating the input from the Form Project
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'perusahaan' => ['required', 'string', 'max:255'],
@@ -95,14 +95,35 @@ class HomeController extends Controller
             ->withErrors($validator)
             ->withInput($request->except('password'));
         } else {
-            // Insert to table users_information
+            // Insert to table list_projects
             Project_list::create([
                 'projects_name' => $request->name,
                 'perusahaan' => $request->perusahaan,
                 'status_projects' => $request->status
             ]);
-            // Redirect to the List User
-            return redirect('/listproject');
+            // Redirect to the List Project
+            return redirect('/listproject')->with('status', 'Success!');
+        }
+    }
+    public function store_report(Request $request)
+    {
+        // Validating the input from the Form Project
+        $validator = Validator::make($request->all(), [
+            'report' => ['required', 'string']
+        ]);
+        if ($validator->fails()) {
+            return redirect('formproject')
+            ->withErrors($validator)
+            ->withInput($request->except('password'));
+        } else {
+            // Insert to table list_projects
+            Project_list::create([
+                'projects_name' => $request->name,
+                'perusahaan' => $request->perusahaan,
+                'status_projects' => $request->status
+            ]);
+            // Redirect to the List Project
+            return redirect('/listproject')->with('status', 'Success!');
         }
     }
 }

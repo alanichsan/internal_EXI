@@ -43,6 +43,9 @@ Route::get('/listproject', function () {
 Route::get('/calendar', function () {
     return view('menu/calendar');
 });
+Route::get('/dailyreports', function () {
+    return view('menu/formdailyreport');
+});
 // Login and register
 Auth::routes();
 // Home

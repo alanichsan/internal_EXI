@@ -13,22 +13,15 @@
     <!-- Scripts -->
     <script src="{{ asset('js/apps.js') }}" defer></script>
 
-    <link href="{{asset('plugin/fullcalendar-4.4.0/packages/core/main.css')}}" rel='stylesheet' />
-    <link href="{{asset('plugin/fullcalendar-4.4.0/packages/daygrid/main.min.css')}}" rel='stylesheet' />
-    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/core/main.min.js')}}"></script>
-    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/interaction/main.min.js')}}"></script>
-    <script src="{{asset('plugin/fullcalendar-4.4.0/packages/daygrid/main.js')}}"></script>
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
@@ -38,7 +31,7 @@
 
 <body>
     <div id="app">
-        @if(!\Request::is(['login','register', 'home', 'formuser', 'formproject', 'commandcenter', 'listuser']))
+        <!-- @if(!\Request::is(['login','register', 'home', 'formuser', 'formproject', 'commandcenter', 'listuser','dailyreports']))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -49,11 +42,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav m-auto">
-                        <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -68,7 +57,7 @@
                 </div>
             </div>
         </nav>
-        @endif
+        @endif -->
         @if(!\Request::is('login') && !\Request::is('register'))
         @include('layouts.sidebar')
         @endif
