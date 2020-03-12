@@ -5,6 +5,7 @@
 		<ul class="sidebar">
 			<li><a href="/listuser">List User</a></li>
 			<li><a href="/listproject">List Project</a></li>
+			<li><a href="/calendar">Daily Report</a></li>
 			<li><a href="/commandcenter">Command Center</a></li>
 		</ul>
 	</section>

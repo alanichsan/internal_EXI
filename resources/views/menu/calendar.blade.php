@@ -74,11 +74,7 @@
 
           start: '2020-02-13T07:00:00'
         },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2020-09-28'
-        }
+        
       ]
     });
 

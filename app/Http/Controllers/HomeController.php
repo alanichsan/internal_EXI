@@ -120,7 +120,7 @@ class HomeController extends Controller
             // Insert to table list_projects
             Report::create([
                 'projects_name' => $request->name,
-                'perusahaan' => $request->perusahaan,
+                'project_name' => $request->perusahaan,
                 'status_projects' => $request->status
             ]);
             // Redirect to the List Project

@@ -12,13 +12,8 @@
                 <form method="POST" action="" enctype="multipart/form-data" class="my-5">
                     @csrf
                     <div class="form-group">
-                        <label for="Report">Report</label>
-                        <!-- <input type="text textarea" class="form-control @error('report') is-invalid @enderror" id="report" placeholder="Input Report" name="report" value="{{ old('report') }}"> -->
-                        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px; width: 100%;" class="p-2"></textarea>
-
-                        @error('report')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <label for="comment">Report:</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
                     </div>
                     <center>
                         <button type="submit" class="btn btn-primary  mt-5" style="width:100px">Create</button>
@@ -27,5 +22,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
 @endsection
