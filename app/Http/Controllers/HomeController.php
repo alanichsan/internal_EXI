@@ -111,8 +111,9 @@ class HomeController extends Controller
     {
         // Validating the input from the Form Project
         $validator = Validator::make($request->all(), [
+            'title' => ['required', 'string'],
             'report' => ['required', 'string'],
-            'project' => ['required', 'string'],
+            'project' => ['required', 'integer'],
             'start' => ['required', 'date'],
             'end' => ['required', 'date']
         ]);
@@ -123,7 +124,8 @@ class HomeController extends Controller
         } else {
             // Insert to table list_projects
             Report::create([
-                'name' => Auth::user()->users_information[0]->name,
+                'user_id' => Auth::user()->id,
+                'title' => $request->title,
                 'content' => $request->report,
                 'project' => $request->project,
                 'start' => $request->start,

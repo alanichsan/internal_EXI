@@ -1,3 +1,5 @@
+@php( $array = \App\Report::where('user_id', Auth::user()->id)->get())
+
 @extends('layouts.app')
 
 @section('content')
@@ -20,10 +22,18 @@
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: ['interaction', 'dayGrid'],
-      defaultDate: '2020-03-12',
-      editable: true,
-      eventLimit: true,
-      events: []
+      defaultDate: "{{\Carbon\Carbon::now()->format('Y-m-d')}}",
+      editable: false,
+      events: [
+        @foreach($array as $report)
+        {
+          title: '{{$report->title}}',
+          start: '{{$report->start}}',
+          end: '{{$report->end}}',
+          url: 'calendar/detail/{{$report->id}}'
+        },
+        @endforeach
+      ]
     });
 
     calendar.render();

@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="Status">Project</label>
                         <select class="form-control @error('Status') is-invalid @enderror" id="project" placeholder="Input Project" name="project" value="{{ old('prject') }}">
-                            <option>Potensial</option>
+                            <option value="1">Potensial</option>
                             <option>Quotation Letter</option>
                         </select>
                         @error('project')
@@ -32,6 +32,13 @@
                         <label for="end">End Event</label>
                         <input type="date" class="form-control @error('end') is-invalid @enderror datetimepicker-input" name="end" value="{{ old('end') }}">
                         @error('start')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Input title" name="title" value="{{ old('title') }}">
+                        @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

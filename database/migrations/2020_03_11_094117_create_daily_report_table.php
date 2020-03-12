@@ -15,8 +15,9 @@ class CreateDailyReportTable extends Migration
     {
         Schema::create('daily_report', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('content');
+            $table->integer('user_id')->references('id')->on('users');
+            $table->string('title'); 
+            $table->string('content'); 
             $table->integer('project')->references('projects_id')->on('projects_list');
             $table->date('start');
             $table->date('end');
