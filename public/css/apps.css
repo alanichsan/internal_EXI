@@ -4944,6 +4944,12 @@ input[type="button"].btn-block {
     background: white;
     font-weight: bold;
 }
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    margin-top: 0;
+    text-align: center;
+    background: white;
+}
 
 .card-header:first-child {
     border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -4955,7 +4961,7 @@ input[type="button"].btn-block {
 
 .card-footer {
     padding: 0.75rem 1.25rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    background: white;
     border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
