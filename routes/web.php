@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@welcome')->name('welcome');
+// Route::get('/', 'HomeController@welcome')->name('welcome');
 
 // Insert Input from Form User
 Route::post('/formuser', 'HomeController@store_user');
@@ -55,4 +55,4 @@ Route::get('/calendar/detail/{report}', function($report){
 // Login and register
 Auth::routes();
 // Home
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
