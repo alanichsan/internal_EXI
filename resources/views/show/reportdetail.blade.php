@@ -5,7 +5,7 @@
 @php( $users = \App\User::where('id', $data[0]->user_id)->get())
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card text-center p-5 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="card-header">
                     Daily Report
