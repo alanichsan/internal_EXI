@@ -1,5 +1,6 @@
 <?php
 
+use App\Report;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,9 @@ Route::get('/calendar', function () {
 });
 Route::get('/dailyreports', function () {
     return view('menu/formdailyreport');
+});
+Route::get('/calendar/detail/{report}', function($report){
+    return view('show/reportdetail', compact('report'));
 });
 // Login and register
 Auth::routes();
