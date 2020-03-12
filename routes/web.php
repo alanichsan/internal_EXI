@@ -20,6 +20,8 @@ Route::post('/formuser', 'HomeController@store_user');
 // Insert Input from Form project
 Route::post('/formproject', 'HomeController@store_project');
 
+Route::post('/dailyreports', 'HomeController@store_report');
+
 // Sidebar Menu
 Route::get('/commandcenter', function () {
     return view('menu/commandcenter');

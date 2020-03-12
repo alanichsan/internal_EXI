@@ -17,7 +17,9 @@ class CreateDailyReportTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('content');
-            $table->enum('valid', ['valid', 'edited', 'deleted']);
+            $table->integer('project')->references('projects_id')->on('projects_list');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }

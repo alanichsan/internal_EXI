@@ -10,6 +10,7 @@ use App\UserInformation;
 use App\Project_list;
 use App\Report;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -110,21 +111,26 @@ class HomeController extends Controller
     {
         // Validating the input from the Form Project
         $validator = Validator::make($request->all(), [
-            'report' => ['required', 'string']
+            'report' => ['required', 'string'],
+            'project' => ['required', 'string'],
+            'start' => ['required', 'date'],
+            'end' => ['required', 'date']
         ]);
         if ($validator->fails()) {
-            return redirect('formproject')
+            return redirect('dailyreports')
             ->withErrors($validator)
             ->withInput($request->except('password'));
         } else {
             // Insert to table list_projects
             Report::create([
-                'projects_name' => $request->name,
-                'project_name' => $request->perusahaan,
-                'status_projects' => $request->status
+                'name' => Auth::user()->users_information[0]->name,
+                'content' => $request->report,
+                'project' => $request->project,
+                'start' => $request->start,
+                'end' => $request->end
             ]);
             // Redirect to the List Project
-            return redirect('/listproject')->with('status', 'Success!');
+            return redirect('/calendar')->with('status', 'Success!');
         }
     }
 }
