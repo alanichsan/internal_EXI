@@ -214,4 +214,7 @@ class HomeController extends Controller
     public function calendar(){
         return view('menu/calendar');
     }
+    public function list_dev_request(){
+        return view('menu/listdevrequest');
+    }
 }

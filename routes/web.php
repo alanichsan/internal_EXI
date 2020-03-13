@@ -37,6 +37,7 @@ Route::get('/listproject', 'HomeController@list_project');
 Route::get('/calendar', 'HomeController@calendar');
 Route::get('/dailyreports', 'HomeController@form_report');
 Route::get('/devrequest', 'HomeController@form_devrequest');
+Route::get('/list_dev_request', 'HomeController@list_dev_request');
 Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
 // Login and register
 Auth::routes();
