@@ -19,19 +19,16 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th></th>
                                         <th>Name</th>
                                         <th>Perusahaan</th>
                                         <th>Status Project</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($array as $data)
                                     <tr>
                                         <td>{{$data->projects_id}}</td>
-                                        <td>{{$data->projects_name}}</td>
-                                        <td>{{$data->perusahaan}}</td>
-                                        <td>{{$data->status_projects}}</td>
                                         <td>
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
@@ -40,6 +37,9 @@
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
                                         </td>
+                                        <td>{{$data->projects_name}}</td>
+                                        <td>{{$data->perusahaan}}</td>
+                                        <td>{{$data->status_projects}}</td>
                                     </tr>
                                     @endforeach
 
