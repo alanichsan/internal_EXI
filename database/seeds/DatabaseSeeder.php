@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'tanggal_lulus_probation' => 'admin',
             'department' => 'IT',
             'jabatan' => 'admin',
-            'role' => 'Staff',
+            'role' => 'Director',
         ]);
     }
 }

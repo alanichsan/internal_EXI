@@ -22,33 +22,21 @@ Route::post('/formuser', 'HomeController@store_user');
 Route::post('/formproject', 'HomeController@store_project');
 
 Route::post('/dailyreports', 'HomeController@store_report');
+Route::post('/devrequest', 'HomeController@store_devrequest');
 
 // Sidebar Menu
-Route::get('/commandcenter', function () {
-    return view('menu/commandcenter');
-});
+Route::get('/commandcenter', 'HomeController@command_center');
 //  Go to Form User
-Route::get('/formuser', function () {
-    return view('menu/formuser');
-});
+Route::get('/formuser', 'HomeController@form_user');
 // Go to Form Project
-Route::get('/formproject', function () {
-    return view('menu/formproject');
-});
+Route::get('/formproject', 'HomeController@form_project');
 // List User
-Route::get('/listuser', function () {
-    return view('menu/listuser');
-});
+Route::get('/listuser', 'HomeController@list_user');
 // List preject
-Route::get('/listproject', function () {
-    return view('menu/listproject');
-});
-Route::get('/calendar', function () {
-    return view('menu/calendar');
-});
-Route::get('/dailyreports', function () {
-    return view('menu/formdailyreport');
-});
+Route::get('/listproject', 'HomeController@list_project');
+Route::get('/calendar', 'HomeController@calendar');
+Route::get('/dailyreports', 'HomeController@form_report');
+Route::get('/devrequest', 'HomeController@form_devrequest');
 Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
 // Login and register
 Auth::routes();

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\UserInformation;
 use App\Project_list;
 use App\Report;
+use App\Request as AppRequest;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,13 +37,33 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
+    public function form_devrequest()
+    {
+        if(Auth::user()->users_information[0]->role != 'Director')
+        {
+            return abort(404);
+        }
+        else
+        {
+            $project_list = \App\Project_list::all();
+            return view('menu/formdevrequest', compact('project_list'));
+        }
+    }
+    public function form_report()
+    {
+        $project_list = \App\Project_list::all();
+        return view('menu/formdailyreport', compact('project_list'));
+    }
+
     public function report_detail($report)
     {
         if (\App\Report::where('id', $report)->exists()) {
             $data = \App\Report::where('id', $report)->get();
             if ($data[0]->user_id == Auth::user()->id) 
             {
-                return view('show/reportdetail', compact('data'));
+                $users = \App\User::where('id', $data[0]->user_id)->get();
+                $project = \App\Project_list::where('projects_id', $data[0]->project)->get();
+                return view('show/reportdetail', compact('data', 'users', 'project'));
             } 
             else 
             {
@@ -149,5 +170,48 @@ class HomeController extends Controller
             // Redirect to the List Project
             return redirect('/calendar')->with('status', 'Success!');
         }
+    }
+    public function store_devrequest(Request $request)
+    {
+        // Validating the input from the Form Project
+        $validator = Validator::make($request->all(), [
+            'title' => ['required', 'string'],
+            'request' => ['required', 'string'],
+            'project' => ['required', 'integer']
+        ]);
+        if ($validator->fails()) {
+            return redirect('devrequest')
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
+        } else {
+            // Insert to table list_projects
+            AppRequest::create([
+                'user_id' => Auth::user()->id,
+                'title' => $request->title,
+                'content' => $request->request,
+                'project' => $request->project,
+                'priority' => 0
+            ]);
+            // Redirect to the List Project
+            return redirect('/')->with('status', 'Success!');
+        }
+    }
+    public function command_center(){
+        return view('menu/commandcenter');
+    }
+    public function form_user(){
+        return view('menu/formuser');
+    }
+    public function form_project(){
+        return view('menu/formproject');
+    }
+    public function list_user(){
+        return view('menu/listuser');
+    }
+    public function list_project(){
+        return view('menu/listproject');
+    }
+    public function calendar(){
+        return view('menu/calendar');
     }
 }

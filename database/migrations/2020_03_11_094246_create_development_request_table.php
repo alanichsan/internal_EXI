@@ -15,8 +15,11 @@ class CreateDevelopmentRequestTable extends Migration
     {
         Schema::create('development_request', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('content');
+            $table->integer('user_id')->references('id')->on('users');
+            $table->string('title'); 
+            $table->string('content'); 
+            $table->integer('project')->references('projects_id')->on('projects_list');
+            $table->tinyInteger('priority');
             $table->timestamps();
         });
     }

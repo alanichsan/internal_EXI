@@ -23,7 +23,7 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: ['interaction', 'dayGrid'],
       defaultDate: "{{\Carbon\Carbon::now()->format('Y-m-d')}}",
-      editable: false,
+      eventLimit: true,
       events: [
         @foreach($array as $report)
         {

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@php( $users = \App\User::where('id', $data[0]->user_id)->get())
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -12,6 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$data[0]->title}}</h5>
                     <p class="">{{$data[0]->content}}</p>
+                    <p class="">{{$project[0]->projects_name}}</p>
                     <p class="card-text"> by {{$users[0]->users_information[0]->name}}</p>
                     <a href="/calendar" class="card-link">kembali</a>
                 </div>
