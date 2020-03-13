@@ -63,10 +63,10 @@
         @endif
 
         <!-- Page Content -->
+
         <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+		@yield('content')
+	</main>    </div>
 </body>
 
 @yield('js-script')

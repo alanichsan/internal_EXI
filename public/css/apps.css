@@ -10230,7 +10230,7 @@ a.text-dark:focus {
     z-index: 1001;
     width: 300px;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -300px;
     background: white;
