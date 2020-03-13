@@ -1,4 +1,4 @@
-@php( $array = \App\Report::where('user_id', Auth::user()->id)->get())
+@php( $array = Auth::user()->report)
 
 @extends('layouts.app')
 

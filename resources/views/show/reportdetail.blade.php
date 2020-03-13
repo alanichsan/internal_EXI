@@ -1,4 +1,3 @@
-@php( $data = \App\Report::where('id', $report)->get())
 @extends('layouts.app')
 
 @section('content')

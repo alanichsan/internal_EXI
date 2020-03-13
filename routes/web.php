@@ -49,9 +49,7 @@ Route::get('/calendar', function () {
 Route::get('/dailyreports', function () {
     return view('menu/formdailyreport');
 });
-Route::get('/calendar/detail/{report}', function($report){
-    return view('show/reportdetail', compact('report'));
-});
+Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
 // Login and register
 Auth::routes();
 // Home

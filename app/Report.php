@@ -16,4 +16,8 @@ class Report extends Model
     ];
 
     protected $table = 'daily_report';
+    public function report()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

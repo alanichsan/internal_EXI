@@ -37,6 +37,22 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
+    public function report_detail($report)
+    {
+        if (\App\Report::where('id', $report)->exists()) {
+            $data = \App\Report::where('id', $report)->get();
+            if ($data[0]->user_id == Auth::user()->id) 
+            {
+                return view('show/reportdetail', compact('data'));
+            } 
+            else 
+            {
+                return abort(404);
+            }
+        } else {
+            return abort(404);
+        }
+    }
     public function store_user(Request $request)
     {
         // Validating the input from the Form User
@@ -56,8 +72,8 @@ class HomeController extends Controller
         // Send Error
         if ($validator->fails()) {
             return redirect('formuser')
-            ->withErrors($validator)
-            ->withInput($request->except('password'));
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
         } else {
             // Insert to table users
             $user = User::create([
@@ -79,7 +95,7 @@ class HomeController extends Controller
                 'jabatan' => $request->jabatan,
                 'role' => $request->role
             ]);
-        
+
             // Redirect to the List User
             return redirect('/listuser')->with('status', 'Success!');
         }
@@ -94,8 +110,8 @@ class HomeController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect('formproject')
-            ->withErrors($validator)
-            ->withInput($request->except('password'));
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
         } else {
             // Insert to table list_projects
             Project_list::create([
@@ -119,8 +135,8 @@ class HomeController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect('dailyreports')
-            ->withErrors($validator)
-            ->withInput($request->except('password'));
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
         } else {
             // Insert to table list_projects
             Report::create([
