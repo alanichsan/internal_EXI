@@ -14,7 +14,7 @@
                     <h5 class="card-title">{{$data[0]->title}}</h5>
                     <p class="">{{$data[0]->content}}</p>
                     <p class="card-text"> by {{$users[0]->users_information[0]->name}}</p>
-                    <a href="/calendar" class="btn btn-primary">Go Back</a>
+                    <a href="/calendar" class="card-link">kembali</a>
                 </div>
                 <div class="card-footer text-muted">
                     {{$data[0]->start}} ~ {{$data[0]->end}}
