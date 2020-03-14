@@ -176,7 +176,7 @@ class HomeController extends Controller
         // Validating the input from the Form Project
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'string'],
-            'request' => ['required', 'string'],
+            'content' => ['required', 'string'],
             'project' => ['required', 'integer']
         ]);
         if ($validator->fails()) {
@@ -188,12 +188,12 @@ class HomeController extends Controller
             AppRequest::create([
                 'user_id' => Auth::user()->id,
                 'title' => $request->title,
-                'content' => $request->request,
+                'content' => $request->content,
                 'project' => $request->project,
                 'priority' => 0
             ]);
             // Redirect to the List Project
-            return redirect('/')->with('status', 'Success!');
+            return redirect('list_dev_request')->with('status', 'Success!');
         }
     }
     public function command_center(){
@@ -215,6 +215,22 @@ class HomeController extends Controller
         return view('menu/calendar');
     }
     public function list_dev_request(){
-        return view('menu/listdevrequest');
+        $array = \App\Request::paginate(10);
+        $authority = false;
+        if(Auth::user()->users_information[0]->department == 'IT'){
+            $authority = true;
+        }
+        return view('menu/listdevrequest', compact('array', 'authority'));
+    }
+    public function make_priority($argue, $id){
+        if($argue == 'makeone')
+        {
+            \App\Request::where('id', $id)->update(['priority'=>1]);
+        }
+        elseif($argue == 'makezero')
+        {
+            \App\Request::where('id', $id)->update(['priority'=>0]);
+        }
+        return redirect('list_dev_request');
     }
 }

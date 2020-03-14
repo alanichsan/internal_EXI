@@ -39,6 +39,7 @@ Route::get('/dailyreports', 'HomeController@form_report');
 Route::get('/devrequest', 'HomeController@form_devrequest');
 Route::get('/list_dev_request', 'HomeController@list_dev_request');
 Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
+Route::get('/makepriority/{argue}/{id}', 'HomeController@make_priority');
 // Login and register
 Auth::routes();
 // Home
