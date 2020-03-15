@@ -1,6 +1,5 @@
 <?php
 
-use App\Report;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,31 +15,34 @@ use Illuminate\Support\Facades\Auth;
 */
 // Route::get('/', 'HomeController@welcome')->name('welcome');
 
-// Insert Input from Form User
-Route::post('/formuser', 'HomeController@store_user');
-// Insert Input from Form project
-Route::post('/formproject', 'HomeController@store_project');
+// USER MANAGEMENT
+Route::post('/formuser', 'UserController@store_user');
+Route::get('/formuser', 'UserController@form_user');
+Route::get('/listuser', 'UserController@list_user');
 
-Route::post('/dailyreports', 'HomeController@store_report');
-Route::post('/devrequest', 'HomeController@store_devrequest');
+// PROJECT
+Route::post('/formproject', 'ProjectController@store_project');
+Route::get('/formproject', 'ProjectController@form_project');
+Route::get('/listproject', 'ProjectController@list_project');
+Route::get('/listproject/delete/{id}', 'ProjectController@delete_project');
 
-// Sidebar Menu
+// REPORT
+Route::post('/dailyreports', 'ReportController@store_report');
+Route::get('/dailyreports', 'ReportController@form_report');
+Route::get('/calendar', 'ReportController@calendar');
+Route::get('/calendar/detail/{report}', 'ReportController@report_detail');
+
+// DEVELOPER REQUEST
+Route::post('/devrequest', 'DeveloperRequestController@store_devrequest');
+Route::get('/devrequest', 'DeveloperRequestController@form_devrequest');
+Route::get('/list_dev_request', 'DeveloperRequestController@list_dev_request');
+Route::get('/makepriority/{argue}/{id}', 'DeveloperRequestController@make_priority');
+
+
 Route::get('/commandcenter', 'HomeController@command_center');
-//  Go to Form User
-Route::get('/formuser', 'HomeController@form_user');
-// Go to Form Project
-Route::get('/formproject', 'HomeController@form_project');
-// List User
-Route::get('/listuser', 'HomeController@list_user');
-// List preject
-Route::get('/listproject', 'HomeController@list_project');
-Route::get('/calendar', 'HomeController@calendar');
-Route::get('/dailyreports', 'HomeController@form_report');
-Route::get('/devrequest', 'HomeController@form_devrequest');
-Route::get('/list_dev_request', 'HomeController@list_dev_request');
-Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
-Route::get('/makepriority/{argue}/{id}', 'HomeController@make_priority');
-// Login and register
+
+
+// LOGIN 
 Auth::routes();
-// Home
+// HOME
 Route::get('/', 'HomeController@index')->name('home');

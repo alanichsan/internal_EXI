@@ -33,9 +33,7 @@
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
-                                            </a>
+                                             <i onclick="delete_project({{$data->projects_id}})" class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                         </td>
                                         <td>{{$data->projects_name}}</td>
                                         <td>{{$data->perusahaan}}</td>
@@ -54,4 +52,13 @@
     <div class="pagination mt-5" style="margin-left:45%">
         {{ $array->links()}}
     </div>
+    @endsection
+    @section('js-script')
+    <script>
+        function delete_project(projects_id) {
+            if (confirm("Press a button!")) {
+                window.location.href = 'listproduct/delete/'+projects_id;
+            } 
+        }
+    </script>
     @endsection

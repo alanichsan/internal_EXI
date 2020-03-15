@@ -87,16 +87,16 @@
     @endsection
     @section('js-script')
     <script>
-        function priority0(coba) {
+        function priority0(req_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makeone/'+coba;
+                window.location.href = 'makepriority/makeone/'+req_id;
             } 
         }
     </script>
     <script>
-        function priority1(coba) {
+        function priority1(req_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makezero/'+coba;
+                window.location.href = 'makepriority/makezero/'+req_id;
             } 
         }
     </script>
