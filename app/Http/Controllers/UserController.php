@@ -17,11 +17,11 @@ class UserController extends Controller
     }
     public function form_user()
     {
-        return view('menu/formuser');
+        return view('menu/form/formuser');
     }
     public function list_user()
     {
-        return view('menu/listuser');
+        return view('menu/list/listuser');
     }
     public function store_user(Request $request)
     {

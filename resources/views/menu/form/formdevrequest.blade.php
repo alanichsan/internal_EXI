@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
-                <div class="card-header">Form Daily Reports</div>
+                <div class="card-header">Form Developer Request</div>
                 <form method="POST" action="" enctype="multipart/form-data" class="my-5">
                     @csrf
                     <div class="form-group">

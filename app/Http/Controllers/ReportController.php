@@ -54,7 +54,7 @@ class ReportController extends Controller
     public function form_report()
     {
         $project_list = \App\Project_list::all();
-        return view('menu/formdailyreport', compact('project_list'));
+        return view('menu/form/formdailyreport', compact('project_list'));
     }
 
     public function report_detail($report)

@@ -15,11 +15,11 @@ class ProjectController extends Controller
     }
     public function list_project()
     {
-        return view('menu/listproject');
+        return view('menu/list/listproject');
     }
     public function form_project()
     {
-        return view('menu/formproject');
+        return view('menu/form/formproject');
     }
     public function delete_project($id)
     {

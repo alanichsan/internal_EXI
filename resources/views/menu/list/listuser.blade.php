@@ -9,12 +9,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
-                @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
                 <div class="main_content">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="info">
                         <a href="/formuser" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
                         <div style="overflow-x:auto;">
@@ -80,8 +80,8 @@
     <script>
         function delete_user(user_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'listuser/delete/'+user_id;
-            } 
+                window.location.href = 'listuser/delete/' + user_id;
+            }
         }
     </script>
     @endsection

@@ -31,9 +31,11 @@
                                         <td>{{$project_list->projects_id}}</td>
                                         <td>
                                             <a href="/listproject{{$project_list->id}}/editproject">
-                                                <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
-                                            </a>
-                                             <i onclick="delete_project({{$project_list->projects_id}})" class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
+                                            <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
+                                        </a>
+                                        <a href="#" onclick="delete_project({{$project_list->projects_id}})">
+                                            <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
+                                        </a>
                                         </td>
                                         <td>{{$project_list->projects_name}}</td>
                                         <td>{{$project_list->perusahaan}}</td>

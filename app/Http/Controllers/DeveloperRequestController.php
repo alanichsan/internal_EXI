@@ -22,7 +22,7 @@ class DeveloperRequestController extends Controller
         if (Auth::user()->users_information[0]->department == 'IT') {
             $authority = true;
         }
-        return view('menu/listdevrequest', compact('array', 'authority'));
+        return view('menu/list/listdevrequest', compact('array', 'authority'));
     }
     // Priority management
     public function make_priority($argue, $id, $authority)
@@ -82,7 +82,7 @@ class DeveloperRequestController extends Controller
             return abort(404);
         } else {
             $project_list = \App\Project_list::all();
-            return view('menu/formdevrequest', compact('project_list'));
+            return view('menu/form/formdevrequest', compact('project_list'));
         }
     }
     public function delete_request($id)
