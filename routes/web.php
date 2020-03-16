@@ -40,29 +40,9 @@ Route::get('/makepriority/{argue}/{id}', 'DeveloperRequestController@make_priori
 
 
 Route::get('/commandcenter', 'HomeController@command_center');
-<<<<<<< HEAD
-//  Go to Form User
-Route::get('/formuser', 'HomeController@form_user');
-// Go to Form Project
-Route::get('/formproject', 'HomeController@form_project');
-// List User
-Route::get('/listuser', 'HomeController@list_user');
-// List preject
-Route::get('/listproject', 'HomeController@list_project');
-Route::get('/listproject/{project_list}/editproject', 'HomeController@edit');
-Route::put('/listproject/{project_list}', 'HomeController@update');
-
-Route::get('/calendar', 'HomeController@calendar');
-Route::get('/dailyreports', 'HomeController@form_report');
-Route::get('/devrequest', 'HomeController@form_devrequest');
-Route::get('/list_dev_request', 'HomeController@list_dev_request');
-Route::get('/calendar/detail/{report}', 'HomeController@report_detail');
-// Login and register
-=======
 
 
 // LOGIN 
->>>>>>> 31966d3e3eb36328247dfe465a71784cadbd986a
 Auth::routes();
 // HOME
 Route::get('/', 'HomeController@index')->name('home');
