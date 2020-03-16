@@ -33,15 +33,7 @@
                                             <a href="/listproject{{$project_list->id}}/editproject">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-<<<<<<< HEAD
-                                            <!-- <form action="{{$project_list->id}}" class="d-inline" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="fa fa-minus-circle" style="font-size:20px;color:red"></button>
-                                            </form> -->
-=======
                                              <i onclick="delete_project({{$data->projects_id}})" class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
->>>>>>> 31966d3e3eb36328247dfe465a71784cadbd986a
                                         </td>
                                         <td>{{$project_list->projects_name}}</td>
                                         <td>{{$project_list->perusahaan}}</td>
