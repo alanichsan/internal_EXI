@@ -26,20 +26,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($array as $data)
+                                    @foreach($array as $project_list)
                                     <tr>
-                                        <td>{{$data->projects_id}}</td>
+                                        <td>{{$project_list->projects_id}}</td>
                                         <td>
-                                            <a href="#edit">
+                                            <a href="/listproject{{$project_list->id}}/editproject">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
-                                            </a>
+                                            <!-- <form action="{{$project_list->id}}" class="d-inline" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="fa fa-minus-circle" style="font-size:20px;color:red"></button>
+                                            </form> -->
                                         </td>
-                                        <td>{{$data->projects_name}}</td>
-                                        <td>{{$data->perusahaan}}</td>
-                                        <td>{{$data->status_projects}}</td>
+                                        <td>{{$project_list->projects_name}}</td>
+                                        <td>{{$project_list->perusahaan}}</td>
+                                        <td>{{$project_list->status_projects}}</td>
                                     </tr>
                                     @endforeach
 

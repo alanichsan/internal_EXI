@@ -34,6 +34,9 @@ Route::get('/formproject', 'HomeController@form_project');
 Route::get('/listuser', 'HomeController@list_user');
 // List preject
 Route::get('/listproject', 'HomeController@list_project');
+Route::get('/listproject/{project_list}/editproject', 'HomeController@edit');
+Route::put('/listproject/{project_list}', 'HomeController@update');
+
 Route::get('/calendar', 'HomeController@calendar');
 Route::get('/dailyreports', 'HomeController@form_report');
 Route::get('/devrequest', 'HomeController@form_devrequest');

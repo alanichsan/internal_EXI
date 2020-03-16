@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if($errors->any())
-<h1>{{$errors->first()}}</h1>
-@endif
 <div class="containers mt-5">
     <div class="row justify-content-center">
         <div class="col-md-9">
