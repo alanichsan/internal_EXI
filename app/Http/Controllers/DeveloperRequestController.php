@@ -9,6 +9,10 @@ use App\Request as AppRequest;
 
 class DeveloperRequestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function list_dev_request()
     {
         // Calling data with paginate

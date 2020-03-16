@@ -9,6 +9,10 @@ use App\Project_list;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function list_project()
     {
         return view('menu/listproject');
