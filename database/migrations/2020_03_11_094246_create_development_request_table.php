@@ -21,6 +21,7 @@ class CreateDevelopmentRequestTable extends Migration
             $table->integer('project')->references('projects_id')->on('projects_list');
             $table->tinyInteger('priority');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

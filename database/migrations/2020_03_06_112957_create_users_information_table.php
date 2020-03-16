@@ -27,6 +27,7 @@ class CreateUsersInformationTable extends Migration
             $table->string('jabatan');
             $table->enum('role', ['Staff', 'Manager', 'Director']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

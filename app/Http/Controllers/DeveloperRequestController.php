@@ -85,4 +85,14 @@ class DeveloperRequestController extends Controller
             return view('menu/formdevrequest', compact('project_list'));
         }
     }
+    public function delete_request($id)
+    {
+        if (Auth::check() || Auth::user()->id != $id) {
+            AppRequest::where('id', $id)->delete();
+
+            return redirect('/list_dev_request')->with('status', 'Deleted!');
+        } else {
+            return redirect('/login')->with('status', 'Failed!');
+        }
+    }
 }

@@ -18,6 +18,7 @@ class CreateProjectMembersTable extends Migration
             $table->unsignedBigInteger('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('projects_id')->references('projects_id')->on('project_list')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

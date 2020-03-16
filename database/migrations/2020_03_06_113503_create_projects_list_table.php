@@ -19,6 +19,7 @@ class CreateProjectsListTable extends Migration
             $table->string('perusahaan');
             $table->enum('status_projects', ['Potensial', 'Quotation Letter', 'BRD', 'PO', 'Development', 'Testing', 'Live', 'Pembayaran', 'Maintenance', 'Finished', 'Passed']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -57,7 +57,7 @@
     <script>
         function delete_project(projects_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'listproduct/delete/'+projects_id;
+                window.location.href = 'listproject/delete/'+projects_id;
             } 
         }
     </script>

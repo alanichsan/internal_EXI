@@ -44,9 +44,11 @@
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete">
+                                            @if(Auth::user()->id != $data->users_id)
+                                            <a onclick="delete_user({{$data->users_id}})">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
+                                            @endif
                                         </td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->alamat}}</td>
@@ -73,4 +75,13 @@
     <div class="pagination mt-5" style="margin-left:45%">
         {{ $array->links()}}
     </div>
+    @endsection
+    @section('js-script')
+    <script>
+        function delete_user(user_id) {
+            if (confirm("Press a button!")) {
+                window.location.href = 'listuser/delete/'+user_id;
+            } 
+        }
+    </script>
     @endsection

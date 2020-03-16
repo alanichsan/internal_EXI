@@ -24,6 +24,9 @@ class ProjectController extends Controller
     public function delete_project($id)
     {
         if (Auth::check()) {
+            Project_list::where('projects_id', $id)->delete();
+
+            return redirect('/listproject')->with('status', 'Deleted!');
         } else {
             return redirect('/login')->with('status', 'Failed!');
         }

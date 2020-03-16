@@ -74,4 +74,15 @@ class UserController extends Controller
             }
         }
     }
+    public function delete_user($id)
+    {
+        if (Auth::check() || Auth::user()->id != $id) {
+            User::where('id', $id)->delete();
+            UserInformation::where('users_id', $id)->delete();
+
+            return redirect('/listuser')->with('status', 'Deleted!');
+        } else {
+            return redirect('/login')->with('status', 'Failed!');
+        }
+    }
 }

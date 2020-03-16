@@ -57,7 +57,7 @@
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete">
+                                            <a href="#delete" onclick="delete_request({{$data->id}})">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
                                             @endif
@@ -92,11 +92,14 @@
                 window.location.href = 'makepriority/makeone/'+req_id;
             } 
         }
-    </script>
-    <script>
         function priority1(req_id) {
             if (confirm("Press a button!")) {
                 window.location.href = 'makepriority/makezero/'+req_id;
+            } 
+        }
+        function delete_request(req_id) {
+            if (confirm("Press a button!")) {
+                window.location.href = 'devrequest/delete/'+req_id;
             } 
         }
     </script>
