@@ -14,6 +14,7 @@ class Project_list extends Model
     ];
 
     protected $table = 'projects_list';
+
     public function report()
     {
         return $this->hasMany(Report::class, 'project', 'projects_id');

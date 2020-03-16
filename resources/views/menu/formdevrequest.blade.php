@@ -30,9 +30,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="request">Request</label>
-                        <textarea class="form-control" rows="5" id="request" class="form-control @error('request') is-invalid @enderror" name="request" value="{{ old('request') }}"></textarea>
-                        @error('request')
+                        <label for="content">Content</label>
+                        <textarea class="form-control" rows="5" id="content" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}"></textarea>
+                        @error('content')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

@@ -1,7 +1,4 @@
-<!-- Summon Model -->
-@php( $array = \App\UserInformation::paginate(10))
-<!-- DIY Pagination Code -->
-
+@php($user_info = Auth::user()->users_information[0])
 @extends('layouts.app')
 
 @section('content')
@@ -16,29 +13,63 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th></th>
-                                        <th>Iuser_id</th>
+                                        @if($user_info->department == 'IT'|| $user_info->role == 'Director')
+                                        <th>Action</th>
+                                        @endif
+                                        <th>From</th>
                                         <th>Title</th>
-                                        <th>project</th>
-                                        <th>priority</th>
+                                        <th>Project</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($array as $data)
+                                    @foreach($array->where('priority', 1) as $data)
                                     <tr>
-                                        <td>{{$data->users_id}}</td>
+                                        <td>{{$data->id}}</td>
+                                        @if($user_info->department == 'IT'|| $user_info->role == 'Director')
                                         <td>
+                                            @if($user_info->users_id == $data->user_id)
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
                                             <a href="#delete">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
+                                            @endif
+                                            @if($authority)
+                                            <i onclick="priority1({{$data->id}})" class="fa fa-star" style="font-size:20px;color:yellow">
+                                            @endif
                                         </td>
-                                        <td>{{$data->Iuser_id}}</td>
+                                        @endif
+                                        <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
                                         <td>{{$data->title}}</td>
                                         <td>{{$data->project}}</td>
-                                        <td>{{$data->priority}} <i class="fa fa-star-o" style="font-size:20px;color:yellow"></td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                                <tbody>
+                                    @foreach($array->where('priority', 0) as $data)
+                                    <tr>
+                                        <td>{{$data->id}}</td>
+                                        @if($user_info->department == 'IT'|| $user_info->role == 'Director')
+                                        <td>
+                                            @if($user_info->users_id == $data->user_id)
+                                            <a href="#edit">
+                                                <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
+                                            </a>
+                                            <a href="#delete">
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
+                                            </a>
+                                            @endif
+                                            @if($authority)
+                                            <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:yellow">
+                                            @endif
+                                        </td>
+                                        @endif
+                                        <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
+                                        <td>{{$data->title}}</td>
+                                        <td>{{$data->project}}</td>
+                                        
                                     </tr>
                                     @endforeach
 
@@ -53,4 +84,20 @@
     <div class="pagination mt-5" style="margin-left:45%">
         {{ $array->links()}}
     </div>
+    @endsection
+    @section('js-script')
+    <script>
+        function priority0(req_id) {
+            if (confirm("Press a button!")) {
+                window.location.href = 'makepriority/makeone/'+req_id;
+            } 
+        }
+    </script>
+    <script>
+        function priority1(req_id) {
+            if (confirm("Press a button!")) {
+                window.location.href = 'makepriority/makezero/'+req_id;
+            } 
+        }
+    </script>
     @endsection
