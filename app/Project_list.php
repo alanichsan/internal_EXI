@@ -21,4 +21,23 @@ class Project_list extends Model
     {
         return $this->hasMany(Report::class, 'project', 'projects_id');
     }
+    public function request()
+    {
+        return $this->hasMany(Request::class, 'project', 'projects_id');
+    }
+    public static function get_status()
+    {
+        $status = [
+            'Potensial', 
+            'Quotation Letter',
+            'BRD',
+            'PO',
+            'Development',
+            'Testing',
+            'Live',
+            'Maintenance',
+            'Finished',
+            'Passed'];
+        return $status;
+    }
 }

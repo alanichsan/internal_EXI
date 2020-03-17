@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>{{$project_list->projects_id}}</td>
                                         <td>
-                                            <a href="/listproject{{$project_list->id}}/editproject">
+                                            <a href="/listproject/edit/{{$project_list->projects_id}}">
                                             <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                         </a>
                                         <a href="#" onclick="delete_project({{$project_list->projects_id}})">

@@ -26,6 +26,8 @@ Route::post('/formproject', 'ProjectController@store_project');
 Route::get('/formproject', 'ProjectController@form_project');
 Route::get('/listproject', 'ProjectController@list_project');
 Route::get('/listproject/delete/{id}', 'ProjectController@delete_project');
+Route::get('/listproject/edit/{id}', 'ProjectController@edit_project');
+Route::put('/listproject/edit/{id}', 'ProjectController@edit_project_store');
 
 // REPORT
 Route::post('/dailyreports', 'ReportController@store_report');

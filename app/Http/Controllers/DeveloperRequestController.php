@@ -19,6 +19,7 @@ class DeveloperRequestController extends Controller
         $array = \App\Request::paginate(10);
         // Check authority to do priority action
         $authority = false;
+        
         if (Auth::user()->users_information[0]->department == 'IT') {
             $authority = true;
         }

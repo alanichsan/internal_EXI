@@ -40,9 +40,9 @@
                                             @endif
                                         </td>
                                         @endif
-                                        <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
+                                        <td>{{\App\UserInformation::where('users_id', $data->user_id)->first()->name}}</td>
                                         <td>{{$data->title}}</td>
-                                        <td>{{$data->project}}</td>
+                                        <td>{{\App\Project_list::where('projects_id', $data->project)->first()->projects_name}}</td>
                                     </tr>
                                     @endforeach
 

@@ -28,16 +28,9 @@
                     <div class="form-group">
                         <label for="Status">Status Project</label>
                         <select class="form-control @error('Status') is-invalid @enderror" id="Status" placeholder="Input Status Project" name="status" value="{{ old('status') }}">
-                            <option>Potensial</option>
-                            <option>Quotation Letter</option>
-                            <option>BRD</option>
-                            <option>PO</option>
-                            <option>Development</option>
-                            <option>Testing</option>
-                            <option>Live</option>
-                            <option>Maintenance</option>
-                            <option>Finished</option>
-                            <option>Passed</option>
+                            @foreach($status as $status)
+                            <option >{{$status}}</option>
+                            @endforeach
                         </select>
                         @error('Role')
                         <div class="alert alert-danger">{{ $message }}</div>

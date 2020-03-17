@@ -16,4 +16,8 @@ class Request extends Model
         'priority'
     ];
     protected $table = 'development_request';
+    public function project()
+    {
+        return $this->belongsTo(Project_list::class);
+    }
 }
