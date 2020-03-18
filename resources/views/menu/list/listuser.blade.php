@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{$data->users_id}}</td>
                                         <td>
-                                            <a href="#edit">
+                                            <a href="/listuser/edit/{{$data->users_id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
                                             @if(Auth::user()->id != $data->users_id)

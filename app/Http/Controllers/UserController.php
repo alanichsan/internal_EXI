@@ -17,7 +17,10 @@ class UserController extends Controller
     }
     public function form_user()
     {
-        return view('menu/form/formuser');
+        $role = User::get_role();
+        $department = User::get_department();
+        $gender = User::get_gender();
+        return view('menu/form/formuser', compact('role', 'department', 'gender'));
     }
     public function list_user()
     {
@@ -83,6 +86,61 @@ class UserController extends Controller
             return redirect('/listuser')->with('status', 'Deleted!');
         } else {
             return redirect('/login')->with('status', 'Failed!');
+        }
+    }
+    public function edit_user($id)
+    {
+        $user = User::where('id', $id)->get();
+        $user = $user[0];
+        $userinfo = $user->users_information[0];
+        $role = User::get_role();
+        $department = User::get_department();
+        $gender = User::get_gender();
+        return view('menu/edituser', compact('user', 'role', 'department', 'gender', 'userinfo'));
+    }
+    public function edit_user_store(Request $request, $id)
+    {
+        // Validating the input from the Form Project
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'date', 'max:255'],
+            'place' => ['required', 'string', 'max:255'],
+            'nik' => ['required', '', 'max:255'],
+            'bergabung' => ['required', 'date', 'max:255'],
+            'lulus' => ['required', 'date', 'max:255'],
+            'department' => ['required', 'string', 'max:255'],
+            'jabatan' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'max:255'],
+        ]);
+        // Send ERROR message 
+        if ($validator->fails()) {
+            return redirect('listuser')
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
+        } else {
+            User::where('id', $id)
+                ->update([
+                    'email' => $request->email,
+                    'password' => Hash::make('password'),
+                ]);
+            UserInformation::where('users_id', $id)
+                ->update([
+                    'name' => $request->name,
+                    'alamat' => $request->alamat,
+                    'gender' => $request->gender,
+                    'date_of_birth' => $request->date,
+                    'place_of_birth' => $request->place,
+                    'nik' => $request->nik,
+                    'tanggal_bergabung' => $request->bergabung,
+                    'tanggal_lulus_probation' => $request->lulus,
+                    'department' => $request->department,
+                    'jabatan' => $request->jabatan,
+                    'role' => $request->role
+                ]);
+            // Redirect to the List Project
+            return redirect('/listuser')->with('status', 'Success!');
         }
     }
 }

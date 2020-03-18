@@ -46,4 +46,31 @@ class User extends Authenticatable
     {
         return $this->hasMany(Report::class, 'user_id', 'id');
     }
+    public static function get_role()
+    {
+        $role = [
+            'Staff',
+            'Manager',
+            'Director'
+        ];
+        return $role;
+    }
+    public static function get_department()
+    {
+        $department = [
+            'IT',
+            'Marketing',
+            'Operational',
+            'Finance'
+        ];
+        return $department;
+    }
+    public static function get_gender()
+    {
+        $gender = [
+            'Male',
+            'Female'
+        ];
+        return $gender;
+    }
 }

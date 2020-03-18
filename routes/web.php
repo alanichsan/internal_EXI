@@ -20,6 +20,8 @@ Route::post('/formuser', 'UserController@store_user');
 Route::get('/formuser', 'UserController@form_user');
 Route::get('/listuser', 'UserController@list_user');
 Route::get('/listuser/delete/{id}', 'UserController@delete_user');
+Route::get('/listuser/edit/{id}', 'UserController@edit_user');
+Route::put('/listuser/edit/{id}', 'UserController@edit_user_store');
 
 // PROJECT
 Route::post('/formproject', 'ProjectController@store_project');
