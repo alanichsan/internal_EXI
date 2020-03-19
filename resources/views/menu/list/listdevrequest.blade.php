@@ -8,6 +8,7 @@
             <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="main_content">
                     <div class="info">
+                        <a href="/devrequest" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
                         <div style="overflow-x:auto;">
                             <table class="content-table">
                                 <thead>
@@ -37,7 +38,7 @@
                                             @endif
                                             @if($authority)
                                             <i onclick="priority1({{$data->id}})" class="fa fa-star" style="font-size:20px;color:yellow">
-                                            @endif
+                                                @endif
                                         </td>
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->first()->name}}</td>
@@ -63,13 +64,13 @@
                                             @endif
                                             @if($authority)
                                             <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:yellow">
-                                            @endif
+                                                @endif
                                         </td>
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
                                         <td>{{$data->title}}</td>
                                         <td>{{$data->project}}</td>
-                                        
+
                                     </tr>
                                     @endforeach
 
@@ -89,18 +90,20 @@
     <script>
         function priority0(req_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makeone/'+req_id;
-            } 
+                window.location.href = 'makepriority/makeone/' + req_id;
+            }
         }
+
         function priority1(req_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makezero/'+req_id;
-            } 
+                window.location.href = 'makepriority/makezero/' + req_id;
+            }
         }
+
         function delete_request(req_id) {
             if (confirm("Press a button!")) {
-                window.location.href = 'devrequest/delete/'+req_id;
-            } 
+                window.location.href = 'devrequest/delete/' + req_id;
+            }
         }
     </script>
     @endsection

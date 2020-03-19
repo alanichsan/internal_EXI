@@ -24,13 +24,8 @@ class ProjectController extends Controller
     }
     public function delete_project($id)
     {
-        if (Auth::check()) {
-            Project_list::where('projects_id', $id)->delete();
-
-            return redirect('/listproject')->with('status', 'Deleted!');
-        } else {
-            return redirect('/login')->with('status', 'Failed!');
-        }
+        Project_list::where('projects_id', $id)->delete();
+        return redirect('/listproject')->with('status', 'Deleted!');
     }
     public function store_Project(Request $request)
     {
@@ -46,19 +41,14 @@ class ProjectController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-            // Check if user actually had login before
-            if (Auth::check()) {
-                // Insert to table list_projects
-                Project_list::create([
-                    'projects_name' => $request->name,
-                    'perusahaan' => $request->perusahaan,
-                    'status_projects' => $request->status
-                ]);
-                // Redirect to the List Project
-                return redirect('/listproject')->with('status', 'Success!');
-            } else {
-                return redirect('/login')->with('status', 'Failed!');
-            }
+            // Insert to table list_projects
+            Project_list::create([
+                'projects_name' => $request->name,
+                'perusahaan' => $request->perusahaan,
+                'status_projects' => $request->status
+            ]);
+            // Redirect to the List Project
+            return redirect('/listproject')->with('status', 'Success!');
         }
     }
     public function edit_project($id)

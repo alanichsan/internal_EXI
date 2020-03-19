@@ -48,8 +48,6 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-            // Check if user actually had login before
-            if (Auth::check()) {
                 // Insert to table users
                 $user = User::create([
                     'email' => $request->email,
@@ -72,20 +70,17 @@ class UserController extends Controller
                 ]);
                 // Redirect to the List User
                 return redirect('/listuser')->with('status', 'Success!');
-            } else {
-                return redirect('/login')->with('status', 'Failed!');
-            }
         }
     }
     public function delete_user($id)
     {
-        if (Auth::check() || Auth::user()->id != $id) {
+        if (Auth::user()->id != $id) {
             User::where('id', $id)->delete();
             UserInformation::where('users_id', $id)->delete();
 
             return redirect('/listuser')->with('status', 'Deleted!');
         } else {
-            return redirect('/login')->with('status', 'Failed!');
+            return redirect('/listuser')->with('status', 'Failed!');
         }
     }
     public function edit_user($id)

@@ -19,7 +19,7 @@ class DeveloperRequestController extends Controller
         $array = \App\Request::paginate(10);
         // Check authority to do priority action
         $authority = false;
-        
+
         if (Auth::user()->users_information[0]->department == 'IT') {
             $authority = true;
         }
@@ -28,21 +28,16 @@ class DeveloperRequestController extends Controller
     // Priority management
     public function make_priority($argue, $id, $authority)
     {
-        // Check Login
-        if (Auth::check()) {
-            // Check if user's role is literally IT
-            if (Auth::user()->users_information[0]->department == 'IT') {
-                if ($argue == 'makeone') {
-                    \App\Request::where('id', $id)->update(['priority' => 1]);
-                } elseif ($argue == 'makezero') {
-                    \App\Request::where('id', $id)->update(['priority' => 0]);
-                }
-                return redirect('list_dev_request');
-            } else {
-                return redirect('/')->with('status', 'Failed!');
+        // Check if user's role is literally IT
+        if (Auth::user()->users_information[0]->department == 'IT') {
+            if ($argue == 'makeone') {
+                \App\Request::where('id', $id)->update(['priority' => 1]);
+            } elseif ($argue == 'makezero') {
+                \App\Request::where('id', $id)->update(['priority' => 0]);
             }
+            return redirect('list_dev_request');
         } else {
-            return redirect('/login')->with('status', 'Failed!');
+            return redirect('/')->with('status', 'Failed!');
         }
     }
     public function store_devrequest(Request $request)
@@ -88,6 +83,7 @@ class DeveloperRequestController extends Controller
     }
     public function delete_request($id)
     {
+        //Check user's authority
         if (Auth::check() || Auth::user()->id != $id) {
             AppRequest::where('id', $id)->delete();
 
