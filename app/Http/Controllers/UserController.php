@@ -91,7 +91,7 @@ class UserController extends Controller
         $role = User::get_role();
         $department = User::get_department();
         $gender = User::get_gender();
-        return view('menu/edituser', compact('user', 'role', 'department', 'gender', 'userinfo'));
+        return view('menu/editform/edituser', compact('user', 'role', 'department', 'gender', 'userinfo'));
     }
     public function edit_user_store(Request $request, $id)
     {
@@ -115,6 +115,7 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
+            // Update to Database
             User::where('id', $id)
                 ->update([
                     'email' => $request->email,

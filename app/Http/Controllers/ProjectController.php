@@ -56,7 +56,7 @@ class ProjectController extends Controller
         $data = Project_list::where('projects_id', $id)->get();
         $data = $data[0];
         $status = Project_list::get_status();
-        return view('menu/editproject', compact('data', 'status'));
+        return view('menu/editform/editproject', compact('data', 'status'));
     }
     public function edit_project_store(Request $request, $id)
     {
@@ -72,6 +72,7 @@ class ProjectController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
+            // Update to database
             Project_list::where('projects_id', $id)
                 ->update([
                     'projects_name' => $request->name,
