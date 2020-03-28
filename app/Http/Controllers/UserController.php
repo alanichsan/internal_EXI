@@ -83,9 +83,9 @@ class UserController extends Controller
             User::where('id', $id)->delete();
             UserInformation::where('users_id', $id)->delete();
 
-            return redirect('/listuser')->with('status', 'Deleted!');
+            return redirect('/listuser')->with('status', 'Deleted Success!');
         } else {
-            return redirect('/login')->with('status', 'Failed!');
+            return redirect('/login')->with('status', 'Deleted Failed!');
         }
     }
     public function edit_user($id)
@@ -140,7 +140,7 @@ class UserController extends Controller
                     'role' => $request->role
                 ]);
             // Redirect to the List Project
-            return redirect('/listuser')->with('status', 'Success!');
+            return redirect('/listuser')->with('status', 'Update Success!');
         }
     }
 }

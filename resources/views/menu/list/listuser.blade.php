@@ -10,13 +10,13 @@
         <div class="col-md-12">
             <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="main_content">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <div class="info">
                         <a href="/formuser" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
+                        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                        @endif
                         <div style="overflow-x:auto;">
                             <table class="content-table">
                                 <thead>

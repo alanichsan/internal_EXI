@@ -89,7 +89,7 @@ class ProjectController extends Controller
                     'status_projects' => $request->status
                 ]);
             // Redirect to the List Project
-            return redirect('/listproject')->with('status', 'Success!');
+            return redirect('/listproject')->with('status', 'Update Success!');
         }
     }
 }
