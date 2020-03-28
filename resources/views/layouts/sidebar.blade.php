@@ -7,6 +7,7 @@
 			<li><a href="/listproject">List Project</a></li>
 			<li><a href="/calendar">Daily Report</a></li>
 			<li><a href="/commandcenter">Command Center</a></li>
+			<li><a href="/list_dev_request">Developer Request</a></li>
 		</ul>
 	</section>
 	<center>

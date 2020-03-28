@@ -34,4 +34,9 @@ class HomeController extends Controller
     {
         return view('menu/commandcenter');
     }
+    
+    public function project_timeline()
+    {
+        return view('menu.form.projecttimeline');
+    }
 }

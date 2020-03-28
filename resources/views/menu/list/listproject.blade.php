@@ -31,10 +31,15 @@
                                         <td>{{$project_list->projects_id}}</td>
                                         <td>
                                             <a href="/listproject/edit/{{$project_list->projects_id}}">
-                                            <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
+                                            <i class="fa fa-edit" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                         </a>
                                         <a href="#" onclick="delete_project({{$project_list->projects_id}})">
-                                            <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
+                                        <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
+                                        <script>
+                                                $(document).ready(function() {
+                                                    $('[data-toggle="tooltip"]').tooltip();
+                                                });
+                                            </script>
                                         </a>
                                         </td>
                                         <td>{{$project_list->projects_name}}</td>

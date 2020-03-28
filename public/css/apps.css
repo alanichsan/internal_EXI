@@ -10378,4 +10378,19 @@ a.text-dark:focus {
     background: #3480dc; 
   }
 
+  /* Tooltip */
+  .box {
+    display:none;
+    position: relative;
+    top: 30px; 
+    left: 10px;
+   background: orange;
+   padding: 5px;
+   border: 1px solid black;
+}
+
+a:hover + .box {
+    display:block;   
+}
+
 

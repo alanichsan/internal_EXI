@@ -33,22 +33,17 @@ class ReportController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-            // Check if user actually had login before
-            if (Auth::check()) {
-                // Insert to table list_projects
-                Report::create([
-                    'user_id' => Auth::user()->id,
-                    'title' => $request->title,
-                    'content' => $request->report,
-                    'project' => $request->project,
-                    'start' => $request->start,
-                    'end' => $request->end
-                ]);
-                // Redirect to the List Project
-                return redirect('/calendar')->with('status', 'Success!');
-            } else {
-                return redirect('/login')->with('status', 'Failed!');
-            }
+            // Insert to table list_projects
+            Report::create([
+                'user_id' => Auth::user()->id,
+                'title' => $request->title,
+                'content' => $request->report,
+                'project' => $request->project,
+                'start' => $request->start,
+                'end' => $request->end
+            ]);
+            // Redirect to the List Project
+            return redirect('/calendar')->with('status', 'Success!');
         }
     }
     public function form_report()

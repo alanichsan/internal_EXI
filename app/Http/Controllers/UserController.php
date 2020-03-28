@@ -48,8 +48,6 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-            // Check if user actually had login before
-            if (Auth::check()) {
                 // Insert to table users
                 $user = User::create([
                     'email' => $request->email,
@@ -72,20 +70,18 @@ class UserController extends Controller
                 ]);
                 // Redirect to the List User
                 return redirect('/listuser')->with('status', 'Success!');
-            } else {
-                return redirect('/login')->with('status', 'Failed!');
-            }
         }
     }
     public function delete_user($id)
     {
-        if (Auth::check() || Auth::user()->id != $id) {
+        if (Auth::user()->id != $id) {
             User::where('id', $id)->delete();
             UserInformation::where('users_id', $id)->delete();
 
             return redirect('/listuser')->with('status', 'Deleted Success!');
         } else {
             return redirect('/login')->with('status', 'Deleted Failed!');
+            return redirect('/listuser')->with('status', 'Failed!');
         }
     }
     public function edit_user($id)
@@ -96,7 +92,7 @@ class UserController extends Controller
         $role = User::get_role();
         $department = User::get_department();
         $gender = User::get_gender();
-        return view('menu/edituser', compact('user', 'role', 'department', 'gender', 'userinfo'));
+        return view('menu/editform/edituser', compact('user', 'role', 'department', 'gender', 'userinfo'));
     }
     public function edit_user_store(Request $request, $id)
     {
@@ -120,6 +116,7 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
+            // Update to Database
             User::where('id', $id)
                 ->update([
                     'email' => $request->email,

@@ -42,12 +42,17 @@
                                         <td>{{$data->users_id}}</td>
                                         <td>
                                             <a href="/listuser/edit/{{$data->users_id}}">
-                                                <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
+                                                <i class="fa fa-edit" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
                                             @if(Auth::user()->id != $data->users_id)
                                             <a onclick="delete_user({{$data->users_id}})">
-                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
                                             </a>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('[data-toggle="tooltip"]').tooltip();
+                                                });
+                                            </script>
                                             @endif
                                         </td>
                                         <td>{{$data->name}}</td>
