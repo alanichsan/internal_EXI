@@ -37,6 +37,6 @@ class HomeController extends Controller
     
     public function project_timeline()
     {
-        return view('menu.form.projecttimeline');
+        return view('menu/weektimeline');
     }
 }
