@@ -8,8 +8,8 @@
     <div class="col-md-10">
       <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
         <div class="card-header">Calendar</div>
-        <a href="#" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
-        <div id='chart_div' class="my-5"></div>
+        <a href="/dailyreports" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
+        <div id="chart_div"></div>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 @endsection
 
 @section('js-script')
-<script type="text/javascript">
+  <script type="text/javascript">
     google.charts.load('current', {'packages':['gantt']});
     google.charts.setOnLoadCallback(drawChart);
 

@@ -46,7 +46,8 @@ Route::get('/devrequest/delete/{id}', 'DeveloperRequestController@delete_request
 
 
 Route::get('/commandcenter', 'HomeController@command_center');
-Route::get('/projecttimeline', 'HomeController@project_timeline');
+Route::get('/formtimeline', 'HomeController@form_timeline');
+Route::get('/weektimeline', 'HomeController@week_timeline');
 
 
 // LOGIN 
