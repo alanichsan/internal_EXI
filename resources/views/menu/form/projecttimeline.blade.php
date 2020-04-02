@@ -11,9 +11,9 @@
                     <div class="form-group">
                         <label for="Status">Project</label>
                         <select class="form-control @error('project') is-invalid @enderror" id="project" placeholder="Input Project" name="project" value="{{ old('prject') }}">
-                            <option value="">Project</option>
-                            <option value="">Project1</option>
-                            <option value="">Project2</option>
+                            @foreach ($project_list as $item)
+                            <option value="{{$item->projects_id }}">{{$item->projects_name}}</option>
+                            @endforeach
                         </select>
                         @error('project')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -36,41 +36,13 @@
 
                     <label for="phase">Phase</label>
                     <ul style="list-style: none;">
+                        @foreach($phase as $phase)
                         <li style="float: left;margin-left:10px;">
-                            <label class="customcheck"><input type="checkbox" class="subOption">Phase 1
+                            <label class="customcheck"><input type="checkbox" class="subOption">{{$phase}}
                                 <span class="checkmark"></span>
                             </label>
                         </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 2
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 3
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 4
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 5
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 6
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
+                        @endforeach
                     </ul>
 
                     <center>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Project_list;
+use App\ProjectTimeline;
 
 class ProjectController extends Controller
 {
@@ -82,5 +83,11 @@ class ProjectController extends Controller
             // Redirect to the List Project
             return redirect('/listproject')->with('status', 'Update Success!');
         }
+    }
+    public function project_timeline()
+    {
+        $phase = ProjectTimeline::get_phase();
+        $project_list = \App\Project_list::all();
+        return view('menu.form.projecttimeline', compact('phase','project_list'));
     }
 }

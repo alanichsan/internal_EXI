@@ -30,6 +30,8 @@ Route::get('/listproject', 'ProjectController@list_project');
 Route::get('/listproject/delete/{id}', 'ProjectController@delete_project');
 Route::get('/listproject/edit/{id}', 'ProjectController@edit_project');
 Route::put('/listproject/edit/{id}', 'ProjectController@edit_project_store');
+Route::get('/projecttimeline', 'ProjectController@project_timeline');
+
 
 // REPORT
 Route::post('/dailyreports', 'ReportController@store_report');
@@ -46,8 +48,6 @@ Route::get('/devrequest/delete/{id}', 'DeveloperRequestController@delete_request
 
 
 Route::get('/commandcenter', 'HomeController@command_center');
-Route::get('/projecttimeline', 'HomeController@project_timeline');
-
 
 // LOGIN 
 Auth::routes();

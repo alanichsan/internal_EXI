@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 class HomeController extends Controller
 {
     /**
@@ -33,10 +31,5 @@ class HomeController extends Controller
     public function command_center()
     {
         return view('menu/commandcenter');
-    }
-    
-    public function project_timeline()
-    {
-        return view('menu.form.projecttimeline');
     }
 }
