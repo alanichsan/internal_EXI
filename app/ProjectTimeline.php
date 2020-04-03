@@ -13,7 +13,8 @@ class ProjectTimeline extends Model
         'project',
         'phase',
         'start',
-        'end'
+        'end',
+        'percent_done'
     ];
 
     protected $table = 'project_timeline';
@@ -29,5 +30,23 @@ class ProjectTimeline extends Model
             'Payment'
         ];
         return $phase;
+    }
+    public static function get_month()
+    {
+        $month = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+        return $month;
     }
 }

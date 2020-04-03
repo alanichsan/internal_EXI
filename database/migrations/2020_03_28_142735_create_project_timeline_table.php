@@ -16,8 +16,11 @@ class CreateProjectTimelineTable extends Migration
         Schema::create('project_timeline', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->references('id')->on('users');
-            $table->string('content');
+            $table->string('phase');
             $table->integer('project')->references('projects_id')->on('projects_list');
+            $table->date('start');
+            $table->date('end');
+            $table->tinyInteger('percent_done');
             $table->timestamps();
             $table->softDeletes();
         });

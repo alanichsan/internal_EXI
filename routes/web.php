@@ -30,7 +30,10 @@ Route::get('/listproject', 'ProjectController@list_project');
 Route::get('/listproject/delete/{id}', 'ProjectController@delete_project');
 Route::get('/listproject/edit/{id}', 'ProjectController@edit_project');
 Route::put('/listproject/edit/{id}', 'ProjectController@edit_project_store');
-Route::get('/projecttimeline', 'ProjectController@project_timeline');
+Route::get('/projecttimeline', 'ProjectController@project_timeline')->name('timeline_ori');
+Route::post('/projecttimeline', 'ProjectController@project_timeline_manipulation');
+Route::get('/projecttimeline_form', 'ProjectController@project_timeline_form');
+Route::post('/projecttimeline_form', 'ProjectController@project_timeline_post');
 
 
 // REPORT
