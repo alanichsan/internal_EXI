@@ -9,11 +9,11 @@
                 <form method="POST" action="" enctype="multipart/form-data" class="my-5">
                     @csrf
                     <div class="form-group">
-                        <label for="Status">Project</label>
+                        <label for="project">Project</label>
                         <select class="form-control @error('project') is-invalid @enderror" id="project" placeholder="Input Project" name="project" value="{{ old('prject') }}">
-                            <option value="">Project</option>
-                            <option value="">Project1</option>
-                            <option value="">Project2</option>
+                            @foreach ($project_list as $item)
+                            <option value="{{$item->projects_id }}">{{$item->projects_name}}</option>
+                            @endforeach
                         </select>
                         @error('project')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -36,42 +36,17 @@
 
                     <label for="phase">Phase</label>
                     <ul style="list-style: none;">
+                        @foreach($phase as $phase)
                         <li style="float: left;margin-left:10px;">
-                            <label class="customcheck"><input type="checkbox" class="subOption">Phase 1
+                            <label class="customcheck"><input type="checkbox" class="subOption" name="phase[]" value="{{$phase}}">{{$phase}}
                                 <span class="checkmark"></span>
                             </label>
                         </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 2
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 3
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 4
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 5
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li style="float: left;margin-left:10px;">
-                            <label class="customcheck">
-                                <input type="checkbox" class="subOption">Phase 6
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
+                        @endforeach
                     </ul>
+                    @error('phase')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <!-- https://freebiesupply.com/free-figma/gantt-chart-figma-template/ -->
                     <center>
                         <button type="submit" class="btn btn-primary  mt-5 float-right" style="width:100px ;">Create</button>
