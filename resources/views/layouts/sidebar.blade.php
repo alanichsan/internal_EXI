@@ -8,7 +8,7 @@
 			<li><a href="/calendar">Daily Report</a></li>
 			<li><a href="/commandcenter">Command Center</a></li>
 			<li><a href="/list_dev_request">Developer Request</a></li>
-			<li><a href="/weektimeline">Project Timeline</a></li>
+			<li><a href="/projecttimeline">Project Timeline</a></li>
 		</ul>
 	</section>
 	<center>
