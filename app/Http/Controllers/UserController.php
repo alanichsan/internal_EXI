@@ -41,6 +41,12 @@ class UserController extends Controller
             'department' => ['required', 'string', 'max:255'],
             'jabatan' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
+            'password' => [
+                'required',
+                'min:6',
+                // 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
+            ],
+            'repassword' => ['same:password'] 
         ]);
         // Send Error
         if ($validator->fails()) {
@@ -48,28 +54,28 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-                // Insert to table users
-                $user = User::create([
-                    'email' => $request->email,
-                    'password' => Hash::make('password'),
-                ]);
-                // Insert to table users_information
-                UserInformation::create([
-                    'users_id' => $user['id'],
-                    'name' => $request->name,
-                    'alamat' => $request->alamat,
-                    'gender' => $request->gender,
-                    'date_of_birth' => $request->date,
-                    'place_of_birth' => $request->place,
-                    'nik' => $request->nik,
-                    'tanggal_bergabung' => $request->bergabung,
-                    'tanggal_lulus_probation' => $request->lulus,
-                    'department' => $request->department,
-                    'jabatan' => $request->jabatan,
-                    'role' => $request->role
-                ]);
-                // Redirect to the List User
-                return redirect('/listuser')->with('status', 'Success!');
+            // Insert to table users
+            $user = User::create([
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+            // Insert to table users_information
+            UserInformation::create([
+                'users_id' => $user['id'],
+                'name' => $request->name,
+                'alamat' => $request->alamat,
+                'gender' => $request->gender,
+                'date_of_birth' => $request->date,
+                'place_of_birth' => $request->place,
+                'nik' => $request->nik,
+                'tanggal_bergabung' => $request->bergabung,
+                'tanggal_lulus_probation' => $request->lulus,
+                'department' => $request->department,
+                'jabatan' => $request->jabatan,
+                'role' => $request->role
+            ]);
+            // Redirect to the List User
+            return redirect('/listuser')->with('status', 'Success!');
         }
     }
     public function delete_user($id)
@@ -119,8 +125,7 @@ class UserController extends Controller
             // Update to Database
             User::where('id', $id)
                 ->update([
-                    'email' => $request->email,
-                    'password' => Hash::make('password'),
+                    'email' => $request->email
                 ]);
             UserInformation::where('users_id', $id)
                 ->update([
