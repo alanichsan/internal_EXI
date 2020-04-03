@@ -51,12 +51,6 @@ Route::get('/devrequest/delete/{id}', 'DeveloperRequestController@delete_request
 
 
 Route::get('/commandcenter', 'HomeController@command_center');
-<<<<<<< HEAD
-Route::get('/formtimeline', 'HomeController@form_timeline');
-Route::get('/weektimeline', 'HomeController@week_timeline');
-
-=======
->>>>>>> e9d4c4ebe2f1df566fd146727f27825a995ccf00
 
 // LOGIN 
 Auth::routes();

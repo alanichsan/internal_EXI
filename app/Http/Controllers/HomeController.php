@@ -32,16 +32,4 @@ class HomeController extends Controller
     {
         return view('menu/commandcenter');
     }
-<<<<<<< HEAD
-    
-    public function week_timeline()
-    {
-        return view('menu/weektimeline');
-    }
-    public function form_timeline()
-    {
-        return view('menu/form/formtimeline');
-    }
-=======
->>>>>>> e9d4c4ebe2f1df566fd146727f27825a995ccf00
 }
