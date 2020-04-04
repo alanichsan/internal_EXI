@@ -10384,4 +10384,5 @@ a.text-dark:focus {
   margin-top: -25px;
   position: relative;
   z-index: 2;
+  cursor: pointer;
 }
