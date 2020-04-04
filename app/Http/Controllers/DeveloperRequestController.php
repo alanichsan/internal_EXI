@@ -26,7 +26,7 @@ class DeveloperRequestController extends Controller
         return view('menu/list/listdevrequest', compact('array', 'authority'));
     }
     // Priority management
-    public function make_priority($argue, $id, $authority)
+    public function make_priority($argue, $id)
     {
         // Check if user's role is literally IT
         if (Auth::user()->users_information[0]->department == 'IT') {

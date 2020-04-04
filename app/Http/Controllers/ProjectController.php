@@ -95,7 +95,7 @@ class ProjectController extends Controller
     {
         $phase = ProjectTimeline::get_phase();
         $project_list = Project_list::all();
-        return view('menu.form.projecttimeline', compact('phase', 'project_list'));
+        return view('menu.form.formtimeline', compact('phase', 'project_list'));
     }
     public function project_timeline_post(Request $request)
     {

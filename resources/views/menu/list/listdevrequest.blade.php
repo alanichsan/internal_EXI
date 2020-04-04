@@ -32,7 +32,7 @@
                                             <a href="#edit">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete">
+                                            <a href="#delete" onclick="delete_request({{$data->id}})">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
                                             @endif
@@ -56,21 +56,21 @@
                                         <td>
                                             @if($user_info->users_id == $data->user_id)
                                             <a href="#edit">
-                                            <i class="fa fa-edit" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
+                                                <i class="fa fa-edit" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
                                             <a href="#delete" onclick="delete_request({{$data->id}})">
-                                            <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
+                                                <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
                                             </a>
                                             @endif
                                             @if($authority)
-                                            <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Khusus!"> 
+                                            <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Khusus!">
                                                 @endif
                                         </td>
                                         <script>
-                                                $(document).ready(function() {
-                                                    $('[data-toggle="tooltip"]').tooltip();
-                                                });
-                                            </script>
+                                            $(document).ready(function() {
+                                                $('[data-toggle="tooltip"]').tooltip();
+                                            });
+                                        </script>
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
                                         <td>{{$data->title}}</td>
