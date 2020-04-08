@@ -58,7 +58,7 @@
 
     var data = new google.visualization.DataTable(<?php echo $jsonTable ?>);
     var options = {
-      height: 400,
+      height: 500,
       gantt: {
         trackHeight: 30
       }

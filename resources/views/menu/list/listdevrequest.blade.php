@@ -100,13 +100,11 @@
                 window.location.href = 'makepriority/makeone/' + req_id;
             }
         }
-
         function priority1(req_id) {
             if (confirm("Press a button!")) {
                 window.location.href = 'makepriority/makezero/' + req_id;
             }
         }
-
         function delete_request(req_id) {
             if (confirm("Press a button!")) {
                 window.location.href = 'devrequest/delete/' + req_id;
