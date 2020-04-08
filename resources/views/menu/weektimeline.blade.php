@@ -13,8 +13,9 @@
           <div class="form-group">
             <label for="project">Project</label>
             <select class="form-control @error('project') is-invalid @enderror" id="project" placeholder="Input Project" name="project" value="{{ old('project') }}">
+              <option value="0">ALL</option>    
               @foreach ($project_list as $item)
-              <option value="{{$item->projects_id }}">{{$item->projects_name}}</option>
+              <option value="{{$item->projects_id }}" @if($picked_project == $item->projects_id){{'selected'}}@endif>{{$item->projects_name}}</option>
               @endforeach
             </select>
             @error('project')
@@ -24,10 +25,10 @@
           <div class="form-group">
             <label for="project">Month</label>
             <select class="form-control @error('project') is-invalid @enderror" id="project" placeholder="Input Project" name="month" value="{{ old('month') }}">
-              <option value="0">ALL</option>  
+              <option value="0" @if($picked_month == 0){{'selected'}}@endif>ALL</option>  
               {{$count = 1}}
               @foreach ($month as $item)
-              <option value="{{$count}}">{{$item}}</option>
+              <option value="{{$count}}" @if($picked_month == $count){{'selected'}}@endif>{{$item}}</option>
               @php($count += 1)
               @endforeach
             </select>

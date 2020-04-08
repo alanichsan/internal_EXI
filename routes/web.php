@@ -48,6 +48,8 @@ Route::get('/devrequest', 'DeveloperRequestController@form_devrequest');
 Route::get('/list_dev_request', 'DeveloperRequestController@list_dev_request');
 Route::get('/makepriority/{argue}/{id}', 'DeveloperRequestController@make_priority');
 Route::get('/devrequest/delete/{id}', 'DeveloperRequestController@delete_request');
+Route::get('/devrequest/edit/{id}', 'DeveloperRequestController@edit_request');
+Route::post('/devrequest/edit/{id}', 'DeveloperRequestController@edit_request_store');
 
 
 Route::get('/commandcenter', 'HomeController@command_center');

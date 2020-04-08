@@ -92,4 +92,36 @@ class DeveloperRequestController extends Controller
             return redirect('/login')->with('status', 'Failed!');
         }
     }
+    public function edit_request($id)
+    {
+        $data = \App\Request::where('id', $id)->get();
+        $data = $data[0];
+        $project_list = \App\Project_list::all();
+        return view('menu/editform/editrequest', compact('data', 'project_list'));
+    }
+    public function edit_request_store(Request $request, $id)
+    {
+        // Validating the input from the Form Request
+        $validator = Validator::make($request->all(), [
+            'title' => ['required', 'string'],
+            'content' => ['required', 'string'],
+            'project' => ['required', 'integer']
+        ]);
+        // Send ERROR message 
+        if ($validator->fails()) {
+            return redirect('devrequest/edit/' . $id)
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
+        } else {
+            // Update to database
+            \App\Request::where('id', $id)
+                ->update([
+                    'title' => $request->title,
+                    'content' => $request->content,
+                    'project' => $request->project
+                ]);
+            // Redirect to the List Project
+            return redirect('/list_dev_request')->with('status', 'Update Success!');
+        }
+    }
 }

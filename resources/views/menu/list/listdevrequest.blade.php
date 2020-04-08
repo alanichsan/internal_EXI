@@ -20,6 +20,7 @@
                                         <th>From</th>
                                         <th>Title</th>
                                         <th>Project</th>
+                                        <th>Content</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,7 +30,7 @@
                                         @if($user_info->department == 'IT'|| $user_info->role == 'Director')
                                         <td>
                                             @if($user_info->users_id == $data->user_id)
-                                            <a href="#edit">
+                                            <a href="devrequest/edit/{{$data->id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
                                             <a href="#delete" onclick="delete_request({{$data->id}})">
@@ -44,6 +45,7 @@
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->first()->name}}</td>
                                         <td>{{$data->title}}</td>
                                         <td>{{\App\Project_list::where('projects_id', $data->project)->first()->projects_name}}</td>
+                                        <td>{{$data->content}}</td>
                                     </tr>
                                     @endforeach
 
@@ -55,7 +57,7 @@
                                         @if($user_info->department == 'IT'|| $user_info->role == 'Director')
                                         <td>
                                             @if($user_info->users_id == $data->user_id)
-                                            <a href="#edit">
+                                            <a href="devrequest/edit/{{$data->id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
                                             <a href="#delete" onclick="delete_request({{$data->id}})">
@@ -64,7 +66,7 @@
                                             @endif
                                             @if($authority)
                                             <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:yellow" data-toggle="tooltip" data-placement="top" title="Khusus!">
-                                                @endif
+                                            @endif
                                         </td>
                                         <script>
                                             $(document).ready(function() {
@@ -74,8 +76,8 @@
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
                                         <td>{{$data->title}}</td>
-                                        <td>{{$data->project}}</td>
-
+                                        <td>{{\App\Project_list::where('projects_id', $data->project)->first()->projects_name}}</td>
+                                        <td>{{$data->content}}</td>
                                     </tr>
                                     @endforeach
 

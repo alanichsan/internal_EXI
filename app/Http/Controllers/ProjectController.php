@@ -70,7 +70,7 @@ class ProjectController extends Controller
         ]);
         // Send ERROR message 
         if ($validator->fails()) {
-            return redirect('formproject')
+            return redirect('listproject/edit/' . $id)
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
@@ -89,7 +89,9 @@ class ProjectController extends Controller
     {
         $month = ProjectTimeline::get_month();
         $project_list = Project_list::all();
-        return view('menu/weektimeline', compact('project_list', 'month'));
+        $picked_month = 0;
+        $picked_project = 0;
+        return view('menu/weektimeline', compact('project_list', 'month', 'picked_month', 'picked_project'));
     }
     public function project_timeline_form()
     {
@@ -112,12 +114,13 @@ class ProjectController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
+            $picked_project = $request->project;
             $checkboxes = $request->phase;
             foreach ($checkboxes as $checkbox) {
                 // Insert to table project_timeline
                 ProjectTimeline::create([
                     'user_id' => Auth::user()->id,
-                    'project' => $request->project,
+                    'project' => $picked_project,
                     'start' => $request->start,
                     'end' => $request->end,
                     'phase' => $checkbox,
@@ -138,78 +141,57 @@ class ProjectController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
-            if ($request->month == 0) {
-                $timeline = ProjectTimeline::where('project', $request->project)->get();
-                if (sizeof($timeline) > 0) {
-                    $table = array();
-                    $rows = array();
-
-                    $table['cols'] = array(
-                        array('id' => 'ID', 'type' => 'string'),
-                        array('id' => 'Phase', 'type' => 'string'),
-                        array('id' => 'Project', 'type' => 'string'),
-                        array('id' => 'Start Date', 'type' => 'date'),
-                        array('id' => 'End Date', 'type' => 'date'),
-                        array('id' => 'Duration', 'type' => 'number'),
-                        array('id' => 'Percent Complete', 'type' => 'number'),
-                        array('id' => 'Depedencies', 'type' => 'string'),
-                    );
-
-                    foreach ($timeline as $t) {
-                        $temp = array();
-                        $temp[] = array('v' => $t->id);
-                        $temp[] = array('v' => $t->phase);
-                        $temp[] = array('v' => \App\Project_list::where('projects_id', $t->project)->first()->projects_name);
-                        $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['start'])) . ',' . (date('m', strtotime($t['start'])) - 1) . ',' . date('d', strtotime($t['start'])) . ')');
-                        $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['end'])) . ',' . (date('m', strtotime($t['end'])) - 1) . ',' . date('d', strtotime($t['end'])) . ')');
-                        $temp[] = array('v' => null);
-                        $temp[] = array('v' => $t->percent_done);
-                        $temp[] = array('v' => null);
-                        $rows[] = array('c' => $temp);
-                    }
-                    $table['rows'] = $rows;
-                    $jsonTable = json_encode($table);
-                }
+            $picked_month = $request->month;
+            $picked_project = $request->project;
+            if ($picked_month == 0 && $picked_project == 0) {
+                $timeline = ProjectTimeline::all();
             } else {
-                $picked_months = $request->month;
-                $qu = sprintf("%02d", $picked_months);
-                $year = date("Y");
-                $timeline = ProjectTimeline::where(DB::RAW('month(start)'), $qu)->where(DB::RAW('year(start)'), $year)->get();
-                if (sizeof($timeline) > 0) {
-                    $table = array();
-                    $rows = array();
-
-                    $table['cols'] = array(
-                        array('id' => 'ID', 'type' => 'string'),
-                        array('id' => 'Phase', 'type' => 'string'),
-                        array('id' => 'Project', 'type' => 'string'),
-                        array('id' => 'Start Date', 'type' => 'date'),
-                        array('id' => 'End Date', 'type' => 'date'),
-                        array('id' => 'Duration', 'type' => 'number'),
-                        array('id' => 'Percent Complete', 'type' => 'number'),
-                        array('id' => 'Depedencies', 'type' => 'string'),
-                    );
-
-                    foreach ($timeline as $t) {
-                        $temp = array();
-                        $temp[] = array('v' => $t->id);
-                        $temp[] = array('v' => $t->phase);
-                        $temp[] = array('v' => \App\Project_list::where('projects_id', $t->project)->first()->projects_name);
-                        $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['start'])) . ',' . (date('m', strtotime($t['start'])) - 1) . ',' . date('d', strtotime($t['start'])) . ')');
-                        $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['end'])) . ',' . (date('m', strtotime($t['end'])) - 1) . ',' . date('d', strtotime($t['end'])) . ')');
-                        $temp[] = array('v' => null);
-                        $temp[] = array('v' => $t->percent_done);
-                        $temp[] = array('v' => null);
-                        $rows[] = array('c' => $temp);
-                    }
-                    $table['rows'] = $rows;
-                    $jsonTable = json_encode($table);
+                if ($picked_project == 0) {
+                    $qu = sprintf("%02d", $picked_month);
+                    $year = date("Y");
+                    $timeline = ProjectTimeline::where(DB::RAW('month(start)'), $qu)->where(DB::RAW('year(start)'), $year)->get();
+                } elseif ($picked_month == 0) {
+                    $timeline = ProjectTimeline::where('project', $picked_project)->get();
+                } else {
+                    $qu = sprintf("%02d", $picked_month);
+                    $year = date("Y");
+                    $timeline = ProjectTimeline::where(DB::RAW('month(start)'), $qu)->where(DB::RAW('year(start)'), $year)->where('project', $picked_project)->get();
                 }
             }
+            if (sizeof($timeline) > 0) {
+                $table = array();
+                $rows = array();
+
+                $table['cols'] = array(
+                    array('id' => 'ID', 'type' => 'string'),
+                    array('id' => 'Phase', 'type' => 'string'),
+                    array('id' => 'Project', 'type' => 'string'),
+                    array('id' => 'Start Date', 'type' => 'date'),
+                    array('id' => 'End Date', 'type' => 'date'),
+                    array('id' => 'Duration', 'type' => 'number'),
+                    array('id' => 'Percent Complete', 'type' => 'number'),
+                    array('id' => 'Depedencies', 'type' => 'string'),
+                );
+
+                foreach ($timeline as $t) {
+                    $temp = array();
+                    $temp[] = array('v' => $t->id);
+                    $temp[] = array('v' => $t->phase);
+                    $temp[] = array('v' => \App\Project_list::where('projects_id', $t->project)->first()->projects_name);
+                    $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['start'])) . ',' . (date('m', strtotime($t['start'])) - 1) . ',' . date('d', strtotime($t['start'])) . ')');
+                    $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['end'])) . ',' . (date('m', strtotime($t['end'])) - 1) . ',' . date('d', strtotime($t['end'])) . ')');
+                    $temp[] = array('v' => null);
+                    $temp[] = array('v' => $t->percent_done);
+                    $temp[] = array('v' => null);
+                    $rows[] = array('c' => $temp);
+                }
+                $table['rows'] = $rows;
+                $jsonTable = json_encode($table);
+            }
             if (isset($jsonTable)) {
-                return view('menu/weektimeline', compact('jsonTable', 'project_list', 'month'));
+                return view('menu/weektimeline', compact('jsonTable', 'project_list', 'month', 'picked_month', 'picked_project'));
             } else {
-                return view('menu/weektimeline', compact('project_list', 'month'));
+                return view('menu/weektimeline', compact('project_list', 'month', 'picked_month', 'picked_project'));
             }
         }
     }
