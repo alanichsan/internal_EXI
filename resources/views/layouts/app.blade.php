@@ -7,9 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>EXI System</title>
+    <link rel="icon" type="image/icon" href="{{ asset('favicon_exi.png') }}" />
     <!-- Scripts -->
     <script src="{{ asset('js/apps.js') }}" defer></script>
 
@@ -66,10 +65,15 @@
 
         <!-- Page Content -->
 
-        <main class="py-4">
-		@yield('content')
-	</main>    </div>
+        <main class="py-4 my-5">
+            @yield('content')
+        </main>
+        <div class="card-footer shadow-lg">
+            <h6 class="p-2 badge badge-info text-white">V1.1.0</h6>
+        </div>
+    </div>
 </body>
 
 @yield('js-script')
+
 </html>

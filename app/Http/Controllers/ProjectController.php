@@ -91,7 +91,42 @@ class ProjectController extends Controller
         $project_list = Project_list::all();
         $picked_month = 0;
         $picked_project = 0;
-        return view('menu/weektimeline', compact('project_list', 'month', 'picked_month', 'picked_project'));
+        $timeline = ProjectTimeline::all();
+        if (sizeof($timeline) > 0) {
+            $table = array();
+            $rows = array();
+
+            $table['cols'] = array(
+                array('id' => 'ID', 'type' => 'string'),
+                array('id' => 'Phase', 'type' => 'string'),
+                array('id' => 'Project', 'type' => 'string'),
+                array('id' => 'Start Date', 'type' => 'date'),
+                array('id' => 'End Date', 'type' => 'date'),
+                array('id' => 'Duration', 'type' => 'number'),
+                array('id' => 'Percent Complete', 'type' => 'number'),
+                array('id' => 'Depedencies', 'type' => 'string'),
+            );
+
+            foreach ($timeline as $t) {
+                $temp = array();
+                $temp[] = array('v' => $t->id);
+                $temp[] = array('v' => $t->phase);
+                $temp[] = array('v' => \App\Project_list::where('projects_id', $t->project)->first()->projects_name);
+                $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['start'])) . ',' . (date('m', strtotime($t['start'])) - 1) . ',' . date('d', strtotime($t['start'])) . ')');
+                $temp[] = array('v' => 'Date(' . date('Y', strtotime($t['end'])) . ',' . (date('m', strtotime($t['end'])) - 1) . ',' . date('d', strtotime($t['end'])) . ')');
+                $temp[] = array('v' => null);
+                $temp[] = array('v' => $t->percent_done);
+                $temp[] = array('v' => null);
+                $rows[] = array('c' => $temp);
+            }
+            $table['rows'] = $rows;
+            $jsonTable = json_encode($table);
+        }
+        if (isset($jsonTable)) {
+            return view('menu/weektimeline', compact('project_list', 'month', 'picked_month', 'picked_project', 'jsonTable'));
+        } else {
+            return view('menu/weektimeline', compact('project_list', 'month', 'picked_month', 'picked_project'));
+        }
     }
     public function project_timeline_form()
     {
