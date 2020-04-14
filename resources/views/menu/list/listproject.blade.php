@@ -1,5 +1,5 @@
 @php( $array = \App\Project_list::paginate(10))
-@extends('layouts.app')
+@extends('layouts.side')
 
 @section('content')
 <div class="container mt-5">

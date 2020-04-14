@@ -2,7 +2,7 @@
 @php( $array = \App\UserInformation::paginate(10))
 <!-- DIY Pagination Code -->
 
-@extends('layouts.app')
+@extends('layouts.side')
 
 @section('content')
 <div class="container mt-5">

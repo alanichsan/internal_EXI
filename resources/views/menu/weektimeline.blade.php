@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.side')
 
 @section('content')
 <div class="containers mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-10">
+  <div class="col-md-12">
       <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
         <div class="card-header">Project Timeline</div>
         <a href="projecttimeline_form" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>

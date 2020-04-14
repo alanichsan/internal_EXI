@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.side')
 
 @section('content')
 <div class="containers mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+    <div class="col-md-12">
             <div class="card p-5 shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="card-header">Form User</div>
                 <!-- Post to the HomeController@store_user -->
@@ -104,32 +104,6 @@
                         @error('Role')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                    </div>
-                    <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="repassword" class="col-md-4 col-form-label text-md-right">{{ __('Verify Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="repassword" type="password" class="form-control @error('repassword') is-invalid @enderror" name="repassword" required>
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
                     </div>
                     <center>
                         <button type="submit" class="btn btn-primary mt-5" style="width:100px">Create</button>

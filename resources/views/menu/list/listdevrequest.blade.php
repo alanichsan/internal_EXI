@@ -1,5 +1,5 @@
 @php($user_info = Auth::user()->users_information[0])
-@extends('layouts.app')
+@extends('layouts.side')
 
 @section('content')
 <div class="container mt-5">

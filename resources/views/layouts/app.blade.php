@@ -69,7 +69,7 @@
             @yield('content')
         </main>
         <div class="card-footer shadow-lg">
-            <h6 class="p-2 badge badge-info text-white">V1.1.0</h6>
+            <h6 class="p-2 badge badge-info text-white">V1.2.0</h6>
         </div>
     </div>
 </body>
