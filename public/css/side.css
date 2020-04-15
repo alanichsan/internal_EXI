@@ -178,7 +178,7 @@ a.article:hover {
   .content-table {
     margin: 25px 0;
     font-size: 0.9em;
-    min-width: 900px;
+    min-width: 100%;
     border-radius: 5px 5px 0 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
@@ -302,4 +302,10 @@ a.article:hover {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+.vl {
+  border-left: 3px solid #6cb2eb;
+  position: absolute;
+  top: 120px;
+  left: 50px;
 }

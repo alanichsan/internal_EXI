@@ -8,7 +8,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card shadow-lg bg-white rounded">
+            <div class="card shadow-lg bg-white rounded">   
                 <div class="main_content">
                     <div class="info">
                         <a href="/formuser" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
