@@ -52,7 +52,7 @@
                 <li><a href="/calendar"><i class="fa fa-calendar"></i>  Daily Report</a></li>
                 <li><a href="/commandcenter"><i class="fa fa-tasks"></i>   Command Center</a></li>
                 <li><a href="/list_dev_request"><i class="fa fa-envelope"></i>  Developer Request</a></li>
-                <li><a href="/projecttimeline"><i class="fa fa-chart-line"></i>  Project Timeline</a></li>
+                <li><a href="/projecttimeline"><i class="fa fa-stream"></i>  Project Timeline</a></li>
             </ul>
 
         </nav>
