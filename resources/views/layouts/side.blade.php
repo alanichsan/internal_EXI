@@ -46,7 +46,6 @@
             </div>
 
             <ul class="list-unstyled components">
-<<<<<<< HEAD
             <div class="ml-3">
                 <i class="fa fa-home mt-3"></i><br><i class="fa fa-user mt-4"></i> <br><i class="fas fa-project-diagram mt-4"></i><br><i class="fa fa-calendar mt-4"></i><br>
                 <i class="fa fa-tasks mt-4"></i><br><i class="fa fa-envelope mt-4"></i><br><br><i class="fa fa-chart-line mt-2"></i><br>
@@ -60,7 +59,6 @@
                 <li><a href="/list_dev_request">  Developer Request</a></li>
                 <li><a href="/projecttimeline">  Project Timeline</a></li>
                 </div>
-=======
                 <li><a href="/"><i class="fa fa-home"></i>  Dashboard</a></li>
                 <li><a href="/listuser"><i class="fa fa-user"></i>  List User</a></li>
                 <li><a href="/listproject"><i class="fas fa-project-diagram"></i>   List Project</a></li>
@@ -68,7 +66,6 @@
                 <li><a href="/commandcenter"><i class="fa fa-tasks"></i>   Command Center</a></li>
                 <li><a href="/list_dev_request"><i class="fa fa-envelope"></i>  Developer Request</a></li>
                 <li><a href="/projecttimeline"><i class="fa fa-stream"></i>  Project Timeline</a></li>
->>>>>>> eb30b9ed2c6ec011015ce7ba61fb68f5b7e38407
             </ul>
 
         </nav>
