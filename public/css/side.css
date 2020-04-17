@@ -309,3 +309,9 @@ a.article:hover {
   top: 120px;
   left: 50px;
 }
+#vl {
+    margin-left: 0;
+}
+#vl.active {
+    margin-left: -250px;
+}

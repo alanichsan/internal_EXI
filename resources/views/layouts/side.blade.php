@@ -46,26 +46,14 @@
             </div>
 
             <ul class="list-unstyled components">
-            <div class="ml-3">
-                <i class="fa fa-home mt-3"></i><br><i class="fa fa-user mt-4"></i> <br><i class="fas fa-project-diagram mt-4"></i><br><i class="fa fa-calendar mt-4"></i><br>
-                <i class="fa fa-tasks mt-4"></i><br><i class="fa fa-envelope mt-4"></i><br><br><i class="fa fa-chart-line mt-2"></i><br>
-            </div>
-            <div class="vl float-right">
-                <li><a href="/">  Dashboard</a></li>
-                <li><a href="/listuser"> List User</a></li>
-                <li><a href="/listproject">   List Project</a></li>
-                <li><a href="/calendar">  Daily Report</a></li>
-                <li><a href="/commandcenter">   Command Center</a></li>
-                <li><a href="/list_dev_request">  Developer Request</a></li>
-                <li><a href="/projecttimeline">  Project Timeline</a></li>
+                @foreach(\App\Sidebar::icons() as $icon)
+                {!! $icon !!}
+                @endforeach
+                <div id="vl" class="vl float-right">
+                    @foreach(\App\Sidebar::texts() as $text)
+                    {!! $text !!}
+                    @endforeach
                 </div>
-                <li><a href="/"><i class="fa fa-home"></i>  Dashboard</a></li>
-                <li><a href="/listuser"><i class="fa fa-user"></i>  List User</a></li>
-                <li><a href="/listproject"><i class="fas fa-project-diagram"></i>   List Project</a></li>
-                <li><a href="/calendar"><i class="fa fa-calendar"></i>  Daily Report</a></li>
-                <li><a href="/commandcenter"><i class="fa fa-tasks"></i>   Command Center</a></li>
-                <li><a href="/list_dev_request"><i class="fa fa-envelope"></i>  Developer Request</a></li>
-                <li><a href="/projecttimeline"><i class="fa fa-stream"></i>  Project Timeline</a></li>
             </ul>
 
         </nav>
@@ -100,6 +88,7 @@
         $(document).ready(function() {
             $('#sidebarCollapse').on('click', function() {
                 $('#sidebar').toggleClass('active');
+                $('#vl').toggleClass('active');
             });
         });
     </script>
