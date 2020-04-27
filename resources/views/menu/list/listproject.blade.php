@@ -33,36 +33,8 @@
                                             <a href="/listproject/edit/{{$project_list->projects_id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:primary" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
-                                            <a href="#"  data-toggle="modal" data-target="#exampleModalCenter">
+                                            <a id="deleteProject" data-toggle="modal" data-target="#deleteModal" data-id="{{$project_list->projects_id}}">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content"> 
-                                                            <div class="modal-body">
-                                                                <center>
-                                                                <i class="fa fa-exclamation-circle"style="font-size:100px;color:red"></i>
-                                                                <h4 class="mt-4"><b>Are you sure?</b></h4>
-                                                                <h6>You won't be able to revert this!</h6>
-                                                                </center>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="container">Close</button>
-                                                                <a type="button" class="btn btn-primary text-white" onclick="delete_project({{$project_list->projects_id}})">Yes, insert it!</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    $(document).ready(function() {
-                                                        $('[data-toggle="tooltip"]').tooltip();
-                                                    });
-                                                    //Modal
-                                                    $('#myModal').on('shown.bs.modal', function() {
-                                                        $('#myInput').trigger('focus')
-                                                    })
-                                                </script>
                                             </a>
                                         </td>
                                         <td>{{$project_list->projects_name}}</td>
@@ -82,13 +54,16 @@
     <div class="pagination mt-5" style="margin-left:45%">
         {{ $array->links()}}
     </div>
+    @include('menu.dialog.set1')
     @endsection
     @section('js-script')
     <script>
-        function delete_project(projects_id) {
-            if (confirm("Press a button!")) {
-                window.location.href = 'listproject/delete/' + projects_id;
-            }
+        var idD;
+        $(document).on("click", "#deleteProject", function() {
+            idD = $(this).attr('data-id');
+        });
+        function delete_request() {
+            window.location.href = 'listproject/delete/' + idD;
         }
     </script>
     @endsection

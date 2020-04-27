@@ -37,7 +37,7 @@
           </div>
           <div class="my-4 float-right">
             <a href="projecttimeline_form" class="btn btn-primary float-left mr-3">Create</a>
-            <button type="submit" class="btn btn-primary" style="width:100px ;">Submit</button>
+            <button type="submit" class="btn btn-primary" style="width:100px ;">Search</button>
           </div>
         </form>
 
@@ -49,6 +49,7 @@
 @endsection
 
 @section('js-script')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 @isset($jsonTable)
 <script type="text/javascript">
   google.charts.load('current', {

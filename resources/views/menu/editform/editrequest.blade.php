@@ -34,7 +34,7 @@
                         @enderror
                     </div>
                     <center>
-                        <button type="submit" class="btn btn-primary  mt-5" style="width:100px">Create</button>
+                        <button type="submit" class="btn btn-primary  mt-5" style="width:100px">Submit</button>
                     </center>
                 </form>
             </div>

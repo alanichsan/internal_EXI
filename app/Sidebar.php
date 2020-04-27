@@ -25,7 +25,7 @@ class Sidebar extends Model
         $html = array();
         $count = 0;
         foreach($texts as $text){
-            array_push($html, '<li><a href="'.$links[$count].'"><i>'.$text.'</i></a></li>');
+            array_push($html, '<li><a href="'.$links[$count].'">'.$text.'</a></li>');
             $count++;
         }
         return $html;
@@ -65,7 +65,7 @@ class Sidebar extends Model
             '/calendar',
             '/commandcenter',
             '/list_dev_request',
-            'list_dev_request',
+            '/projecttimeline',
         ];
         return $links;
     }

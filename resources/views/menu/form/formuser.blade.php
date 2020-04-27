@@ -105,6 +105,32 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="repassword" class="col-md-4 col-form-label text-md-right">{{ __('Verify Password') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="repassword" type="password" class="form-control @error('repassword') is-invalid @enderror" name="repassword" required>
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
                     <center>
                         <button type="submit" class="btn btn-primary mt-5" style="width:100px">Create</button>
                     </center>

@@ -58,3 +58,6 @@ Route::get('/commandcenter', 'HomeController@command_center');
 Auth::routes();
 // HOME
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home',  function () {
+    return redirect('/');
+});

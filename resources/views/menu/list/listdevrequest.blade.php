@@ -8,7 +8,9 @@
             <div class="card shadow-lg bg-white rounded">
                 <div class="main_content">
                     <div class="info">
+                        @if($user_info->role == 'Director')
                         <a href="/devrequest" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>
+                        @endif
                         <div style="overflow-x:auto;">
                             <table class="content-table">
                                 <thead>
@@ -33,13 +35,13 @@
                                             <a href="devrequest/edit/{{$data->id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:yellow"></i>
                                             </a>
-                                            <a href="#delete" onclick="delete_request({{$data->id}})">
+                                            <a id="deleteReq" data-toggle="modal" data-target="#deleteModal" data-id="{{$data->id}}">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red"></i>
                                             </a>
                                             @endif
                                             @if($authority)
-                                            <i onclick="priority1({{$data->id}})" class="fas fa-star" style="font-size:20px;color:yellow">
-                                                @endif
+                                            <i id="priority1" class="fas fa-star" style="font-size:20px;color:yellow" data-toggle="modal" data-target="#priority1Modal" data-id="{{$data->id}}" title="Khusus!">
+                                            @endif
                                         </td>
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->first()->name}}</td>
@@ -57,44 +59,17 @@
                                         @if($user_info->department == 'IT'|| $user_info->role == 'Director')
                                         <td>
                                             @if($user_info->users_id == $data->user_id)
-                                            <a href="#edit">
+                                            <a href="devrequest/edit/{{$data->id}}">
                                                 <i class="fa fa-edit" style="font-size:20px;color:primary" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
-                                            <a href="#delete" data-toggle="modal" data-target="#exampleModalCenter">
+                                            <a id="deleteReq" data-toggle="modal" data-target="#deleteModal" data-id="{{$data->id}}">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
                                             </a>
-                                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body">
-                                                            <center>
-                                                                <i class="fa fa-exclamation-circle" style="font-size:100px;color:red"></i>
-                                                                <h4 class="mt-4"><b>Are you sure?</b></h4>
-                                                                <h6>You won't be able to revert this!</h6>
-                                                            </center>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                            <a type="button" class="btn btn-primary text-white"  onclick="delete_request({{$data->id}})">Yes, insert it!</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             @endif
                                             @if($authority)
-                                            <i onclick="priority0({{$data->id}})" class="fa fa-star-o" style="font-size:20px;color:orange" data-toggle="tooltip" data-placement="top" title="Khusus!">
-                                                @endif
+                                            <i id="priority0" class="fa fa-star" style="font-size:20px;color:orange" data-toggle="modal" data-target="#priority0Modal" data-id="{{$data->id}}" title="Khusus!">
+                                            @endif
                                         </td>
-                                        <script>
-                                            $(document).ready(function() {
-                                                $('[data-toggle="tooltip"]').tooltip();
-                                            });
-
-                                            // modal
-                                            $('#myModal').on('shown.bs.modal', function() {
-                                                $('#myInput').trigger('focus')
-                                            })
-                                        </script>
                                         @endif
                                         <td>{{\App\UserInformation::where('users_id', $data->user_id)->get('name')[0]->name}}</td>
                                         <td>{{$data->title}}</td>
@@ -115,24 +90,33 @@
         {{ $array->links()}}
     </div>
     @endsection
+
     @section('js-script')
+    @include('menu.dialog.set1')
     <script>
-        function priority0(req_id) {
-            if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makeone/' + req_id;
-            }
+        var idP0;
+        var idP1;
+        var idD;
+        $(document).on("click", "#priority0", function() {
+            idP0 = $(this).attr('data-id');
+        });
+        $(document).on("click", "#priority1", function() {
+            idP1 = $(this).attr('data-id');
+        });
+        $(document).on("click", "#deleteReq", function() {
+            idD = $(this).attr('data-id');
+        });
+
+        function priority0() {
+            window.location.href = 'makepriority/makeone/' + idP0;
         }
 
-        function priority1(req_id) {
-            if (confirm("Press a button!")) {
-                window.location.href = 'makepriority/makezero/' + req_id;
-            }
+        function priority1() {
+            window.location.href = 'makepriority/makezero/' + idP1;
         }
 
-        function delete_request(req_id) {
-            if (confirm("Press a button!")) {
-                window.location.href = 'devrequest/delete/' + req_id;
-            }
+        function delete_request() {
+            window.location.href = 'devrequest/delete/' + idD;
         }
     </script>
     @endsection

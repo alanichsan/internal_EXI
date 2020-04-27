@@ -45,7 +45,7 @@
                                                 <i class="fa fa-edit" style="font-size:20px;color:primary" data-toggle="tooltip" data-placement="top" title="Edit!"></i>
                                             </a>
                                             @if(Auth::user()->id != $data->users_id)
-                                            <a onclick="delete_user({{$data->users_id}})">
+                                            <a id="deleteReq" data-toggle="modal" data-target="#deleteModal" data-id="{{$data->users_id}}">
                                                 <i class="fa fa-minus-circle" style="font-size:20px;color:red" data-toggle="tooltip" data-placement="top" title="Delete!"></i>
                                             </a>
                                             <script>
@@ -80,13 +80,16 @@
     <div class="pagination mt-5" style="margin-left:45%">
         {{ $array->links()}}
     </div>
+    @include('menu.dialog.set1')
     @endsection
     @section('js-script')
     <script>
-        function delete_user(user_id) {
-            if (confirm("Press a button!")) {
-                window.location.href = 'listuser/delete/' + user_id;
-            }
+        var idD;
+        $(document).on("click", "#deleteReq", function() {
+            idD = $(this).attr('data-id');
+        });
+        function delete_request() {
+            window.location.href = 'listuser/delete/' + idD;
         }
     </script>
     @endsection
