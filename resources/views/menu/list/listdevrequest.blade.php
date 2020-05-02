@@ -6,6 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow-lg bg-white rounded">
+            <div class="card-header m-4">Development Request</div>   
                 <div class="main_content">
                     <div class="info">
                         @if($user_info->role == 'Director')

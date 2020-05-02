@@ -6,6 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow-lg bg-white rounded">
+            <div class="card-header m-4">List Project</div>   
                 <div class="main_content">
                     <div class="info">
                         <a href="/formproject" class="btn btn-primary my-3">Create<span class="mx-3">&plus;</span></a>

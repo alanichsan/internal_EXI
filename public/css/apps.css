@@ -10251,18 +10251,12 @@ a.text-dark:focus {
 }
 
 /* footer */
-.card-footer {
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     font-size: 14px;
     background-color: f5f5f5;
-    color: black;
     text-align: center;
- }
-.side-footer {
-    position: fixed;
-    margin-left: 40%;
-    bottom: 0;
  }

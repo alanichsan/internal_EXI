@@ -68,7 +68,7 @@
         <main class="py-4 my-5">
             @yield('content')
         </main>
-        <div class="card-footer shadow-lg">
+        <div class="footer shadow-lg p-1">
             <h6 class="p-2 badge badge-info text-white">V1.2.0</h6>
         </div>
     </div>
